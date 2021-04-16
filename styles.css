@@ -5,38 +5,70 @@ box-sizing: border-box;
 }
 html {
     font-size: 10px;
+    
 }
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    height: 30rem;
+    background-color:#C9F9EF;
+    width:30rem ;
+    border-radius: 5%;
+
+  }
 
 .header {
- height: 5rem;
- background-color: salmon;
- font-size: 5rem;
+ height: 7rem;
+ width: 20rem;
+ background-color: #AD7B7F;
+ font-size: 2rem;
  display: flex;
  justify-content: center;
-}
-
-.container {
-height: 130rem;
-width: 100%;
-background-color: seagreen;
+ align-items: center;
+margin-top: 4rem;
+border-radius: 5%;
 }
 
 .main--body {
-    display: flex;
-    justify-content: center;
+    position: absolute;
+    margin-top: 10rem;
+}
+
+.price {
+    height: 3rem;
+    width: 20rem;
+    font-size: 3rem;
+    border-radius: 5%;
+background-color: ##FADFBE;
 }
 
 .rate {
+    display: block;
     height: 3rem;
     width: 20rem;
-    background-color: rosybrown;
-    position: relative;
+    background-color: #FAD7DA;
     font-size: 3rem;
+
 }
 .result {
+    display: block;
     height: 3rem;
     width: 20rem;
-    background-color: rgb(247, 237, 102);
-    position: relative;
+    background-color: rgba(84, 102, 116, 0.329);
     font-size: 3rem;
+ 
+
+}
+
+.btn {
+    margin-top: 3rem;
+    height: 3rem;
+    width: 20rem;
+
 }
