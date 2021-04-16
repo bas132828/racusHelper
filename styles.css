@@ -30,7 +30,7 @@ html {
  background-color: #AD7B7F;
  font-size: 2rem;
  display: flex;
- /* justify-content: center; */
+ justify-content: center;
  align-items: center;
 margin-top: 4rem;
 border-radius: 5%;
@@ -46,7 +46,8 @@ border-radius: 5%;
     width: 40rem;
     font-size: 3rem;
     border-radius: 5%;
-background-color: ##FADFBE;
+    background-color: ##FADFBE;
+    padding-left: 1rem;
 }
 
 .rate {
@@ -55,6 +56,7 @@ background-color: ##FADFBE;
     width: 40rem;
     background-color: #FAD7DA;
     font-size: 3rem;
+    padding-left: 1rem;
 
 }
 .result {
@@ -63,7 +65,8 @@ background-color: ##FADFBE;
     width: 40rem;
     background-color: rgba(84, 102, 116, 0.329);
     font-size: 3rem;
- 
+    padding-left: 1rem;
+
 
 }
 

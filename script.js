@@ -22,13 +22,20 @@ const usdValue = async function () {
 usdValue();
 
 const calc = function(e) {
+
  e.preventDefault;
  const value =document.querySelector('.price').value;
+
+ if(!Number(val.value)) return alert ('ему точно буквы в рубли считать?')
+ 
  const toPay = Number(usdPrice)*Number(value)
  result.textContent = `${Math.trunc(toPay)} руб. ${Math.trunc(toPay*100)%100} коп.`
 }
 
 btn.addEventListener('click', calc)
+
+
+//copy to clipboard feature
 
 const copyTextareaBtn = document.querySelector('.js-textareacopybtn');
 
