@@ -16,20 +16,21 @@ html {
 .container {
     display: flex;
     justify-content: center;
-    height: 30rem;
+    height: 40rem;
     background-color:#C9F9EF;
-    width:30rem ;
+    width:60rem ;
     border-radius: 5%;
+    margin: 0 auto;
 
   }
 
 .header {
  height: 7rem;
- width: 20rem;
+ width: 40rem;
  background-color: #AD7B7F;
  font-size: 2rem;
  display: flex;
- justify-content: center;
+ /* justify-content: center; */
  align-items: center;
 margin-top: 4rem;
 border-radius: 5%;
@@ -41,8 +42,8 @@ border-radius: 5%;
 }
 
 .price {
-    height: 3rem;
-    width: 20rem;
+    height: 4rem;
+    width: 40rem;
     font-size: 3rem;
     border-radius: 5%;
 background-color: ##FADFBE;
@@ -50,16 +51,16 @@ background-color: ##FADFBE;
 
 .rate {
     display: block;
-    height: 3rem;
-    width: 20rem;
+    height: 4rem;
+    width: 40rem;
     background-color: #FAD7DA;
     font-size: 3rem;
 
 }
 .result {
     display: block;
-    height: 3rem;
-    width: 20rem;
+    height: 4rem;
+    width: 40rem;
     background-color: rgba(84, 102, 116, 0.329);
     font-size: 3rem;
  
@@ -68,7 +69,14 @@ background-color: ##FADFBE;
 
 .btn {
     margin-top: 3rem;
-    height: 3rem;
-    width: 20rem;
+    height: 4rem;
+    width: 40rem;
 
+}
+
+.btn-2 {
+    position: absolute;
+    height: 4rem;
+    width: 40rem;
+    margin-top: 29rem;
 }

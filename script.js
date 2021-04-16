@@ -30,8 +30,24 @@ const calc = function(e) {
  e.preventDefault;
  const value =document.querySelector('.price').value;
  const toPay = Number(usdPrice)*Number(value)
- result.textContent = toPay.toFixed(2)
+ result.textContent = `${toPay.toFixed(0)} руб. ${toPay.toFixed(2).slice(-2)} коп.`
 
 }
 
 btn.addEventListener('click', calc)
+
+var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
+
+copyTextareaBtn.addEventListener('click', function(event) {
+  var copyTextarea = document.querySelector('.js-copytextarea');
+  copyTextarea.focus();
+  copyTextarea.select();
+
+  try {
+    var successful = document.execCommand('copy');
+    var msg = successful ? 'successful' : 'unsuccessful';
+    console.log('Copying text command was ' + msg);
+  } catch (err) {
+    console.log('Oops, unable to copy');
+  }
+});
