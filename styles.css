@@ -1,0 +1,42 @@
+*{
+margin:0;
+padding: 0;
+box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+}
+
+.header {
+ height: 5rem;
+ background-color: salmon;
+ font-size: 5rem;
+ display: flex;
+ justify-content: center;
+}
+
+.container {
+height: 130rem;
+width: 100%;
+background-color: seagreen;
+}
+
+.main--body {
+    display: flex;
+    justify-content: center;
+}
+
+.rate {
+    height: 3rem;
+    width: 20rem;
+    background-color: rosybrown;
+    position: relative;
+    font-size: 3rem;
+}
+.result {
+    height: 3rem;
+    width: 20rem;
+    background-color: rgb(247, 237, 102);
+    position: relative;
+    font-size: 3rem;
+}
