@@ -9,7 +9,7 @@ const nuts = document.querySelector(".imageW");
 let usdPrice;
 
 const renewPage = function () {
-  document.querySelector(".price").value = 0;
+  document.querySelector(".price").value = "";
 };
 
 renewPage();
@@ -34,9 +34,10 @@ async function apiAdvice() {
 
   const data = await resp.json();
 
-  // console.log(data.slip.advice);
+  console.log(data.slip.advice);
   render(`${data.slip.advice}`);
 }
+apiAdvice();
 
 const calc = function (e) {
   e.preventDefault;
@@ -50,11 +51,11 @@ const calc = function (e) {
   } коп.`;
   apiAdvice();
 
-  console.log(toPay);
-  if (toPay > 100000) {
-    nuts.style.display = "flex";
-    setTimeout(() => (nuts.style.display = "none"), 50);
-  }
+  // console.log(toPay);
+  // if (toPay > 100000) {
+  //   nuts.style.display = "flex";
+  //   setTimeout(() => (nuts.style.display = "none"), 50);
+  // }
 };
 
 btn.addEventListener("click", calc);
