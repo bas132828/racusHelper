@@ -77,3 +77,16 @@ html {
   width: 40rem;
   margin-top: 29rem;
 }
+
+.image {
+  height: 100vh;
+  width: auto;
+  position: absolute;
+  top: 0;
+  margin: 0 auto;
+}
+
+.imageW {
+  display: none;
+  justify-content: center;
+}

@@ -3,6 +3,9 @@ const rate = document.querySelector(".rate");
 const result = document.querySelector(".result");
 const btn = document.querySelector(".btn");
 let val = document.querySelector(".price");
+const text = document.querySelector(".quote");
+const nuts = document.querySelector(".imageW");
+
 let usdPrice;
 
 const renewPage = function () {
@@ -21,16 +24,37 @@ const usdValue = async function () {
 
 usdValue();
 
+const render = function (str) {
+  text.textContent = str;
+};
+
+//advice
+async function apiAdvice() {
+  const resp = await fetch("https://api.adviceslip.com/advice");
+
+  const data = await resp.json();
+
+  console.log(data.slip.advice);
+  render(`${data.slip.advice}`);
+}
+
 const calc = function (e) {
   e.preventDefault;
   const value = document.querySelector(".price").value;
 
-  if (!Number(val.value)) return alert("ему точно буквы в рубли считать?");
+  if (!Number(val.value)) return renewPage();
 
   const toPay = Number(usdPrice) * Number(value);
   result.textContent = `${Math.trunc(toPay)} руб. ${
     Math.trunc(toPay * 100) % 100
   } коп.`;
+  apiAdvice();
+
+  console.log(toPay);
+  if (toPay > 100000) {
+    nuts.style.display = "flex";
+    setTimeout(() => (nuts.style.display = "none"), 100);
+  }
 };
 
 btn.addEventListener("click", calc);
@@ -52,3 +76,5 @@ copyTextareaBtn.addEventListener("click", function (event) {
     console.log("Oops, unable to copy");
   }
 });
+
+// const nutsalov = function () {};
