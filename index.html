@@ -1,29 +1,63 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-
-    <title>racus helper</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js" charset="utf-8"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body >
-    <div class="wrapper">
-    <div class='container'>
-      <header class='header quote'> RACUS HELPER</header>
-      <div class='main--body'>
-       <input type='text' class='price' onfocus="this.value=''">
-       <div class='rate'></div>
-       <div >
-         <textarea name="text" id="textatea" class="result js-copytextarea" cols="30" rows="10"></textarea>
-       </div>
-       <button class='btn'>Calculate</button>
+  <body>
+    <div class="superwrapper">
+      <div class="main">
+        <div class="flex-parent header">
+          <div class="header header-left">
+            <span class="differentcolor">Calculate</span><br />what's your debt
+            in roubles today
+          </div>
+          <div class="header header-right">
+            <span class="differentcolor">exchange rate:</span>
+            <p class="rate">78.9808</p>
+          </div>
+        </div>
+        <hr />
+        <div class="wrapper">
+          <div class="calcform">
+            <form class="Inputform" action="">
+              <input
+                class="typewindow price"
+                type="text"
+                placeholder="Type the debt in USD..."
+                onfocus="this.value=''"
+              />
+            </form>
+            <div class="result-div">
+              <textarea
+                name="text"
+                id="textarea"
+                class="result js-copytextarea"
+                cols="40"
+                rows="4"
+              >
+72000 руб. 55 коп.</textarea
+              >
+            </div>
+            <div><button class="btn">Calculate</button></div>
+            <div>
+              <button class="btn btn-2 js-textareacopybtn">Copy text</button>
+            </div>
+            <div class="advice quote">
+              Get a piece of advice every time you hit the calculate button
+            </div>
+          </div>
+        </div>
       </div>
-      </div>
-      <button class='btn-2 js-textareacopybtn'>Copy text</button>
     </div>
-    <div class="imageW">    <img src="/image/2r.PNG" class = 'image' alt="nutsalov">
-    </div>
-  </div>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
