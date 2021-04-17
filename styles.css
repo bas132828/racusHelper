@@ -73,7 +73,7 @@ hr {
   border-bottom: 2px solid #9d9adb;
   outline: none;
   padding: 0.5rem;
-  background-color: #e9e9fb;
+  background: linear-gradient(to bottom, #f1f1fc, #ebebfb);
   font-size: 2rem;
 }
 
