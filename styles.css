@@ -101,6 +101,7 @@ hr {
   color: #7f7be4;
   cursor: pointer;
   border: none;
+  outline: none;
 }
 .btn:hover {
   transform: translateY(-0.1rem);
