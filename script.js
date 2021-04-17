@@ -17,7 +17,7 @@ const usdValue = async function () {
   const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
   const data = await resp.json();
   // console.log(data)
-  console.log(data.Valute.USD.Value);
+  // console.log(data.Valute.USD.Value);
   usdPrice = data.Valute.USD.Value;
   rate.textContent = usdPrice;
 };
@@ -34,7 +34,7 @@ async function apiAdvice() {
 
   const data = await resp.json();
 
-  console.log(data.slip.advice);
+  // console.log(data.slip.advice);
   render(`${data.slip.advice}`);
 }
 
