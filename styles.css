@@ -16,6 +16,7 @@ body {
 
 .main {
   width: 60rem;
+  height: 100vh;
   background-color: #c6c5ec;
 }
 
@@ -58,7 +59,7 @@ hr {
 
 .calcform {
   width: 43.75rem;
-  height: 47.12rem;
+  height: 45.12rem;
   margin-top: 0.87rem;
   background: linear-gradient(to bottom, #ffffff, #b3b1f1);
   text-align: center;
