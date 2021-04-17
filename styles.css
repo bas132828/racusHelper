@@ -80,10 +80,11 @@ html {
 
 .image {
   height: 100vh;
-  width: auto;
+  width: 100vw;
   position: absolute;
   top: 0;
   margin: 0 auto;
+  opacity: 0.3;
 }
 
 .imageW {

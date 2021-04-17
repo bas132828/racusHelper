@@ -53,7 +53,7 @@ const calc = function (e) {
   console.log(toPay);
   if (toPay > 100000) {
     nuts.style.display = "flex";
-    setTimeout(() => (nuts.style.display = "none"), 100);
+    setTimeout(() => (nuts.style.display = "none"), 50);
   }
 };
 
