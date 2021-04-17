@@ -83,7 +83,7 @@ hr {
   font-size: 3.75rem;
 }
 #textarea {
-  background: #e8e7fa;
+  background: linear-gradient(to bottom, #e7e7fa, #dfdff9);
   border: none;
   outline: none;
   resize: none;
