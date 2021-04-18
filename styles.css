@@ -21,6 +21,7 @@ body {
   height: 100vh;
   background-color: #c6c5ec;
   border-radius: 2.5rem;
+  overflow: scroll;
 }
 
 .superwrapper {
