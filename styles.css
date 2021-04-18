@@ -154,7 +154,7 @@ btn2 .btn:hover {
   }
 
   .header-right {
-    margin: 0.1rem;
+    margin: 0.3rem;
     margin-right: 1rem;
   }
 
@@ -163,7 +163,7 @@ btn2 .btn:hover {
   }
 
   .typewindow {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   .result-div {
@@ -171,13 +171,13 @@ btn2 .btn:hover {
   }
 
   .btn {
-    width: 10rem;
-    height: 2rem;
+    width: 10.5rem;
+    height: 2.5rem;
     font-size: 1rem;
   }
 
   .advice {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
 
   .main {
