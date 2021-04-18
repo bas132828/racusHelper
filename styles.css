@@ -20,6 +20,7 @@ body {
   width: 60rem;
   height: 100vh;
   background-color: #c6c5ec;
+  border-radius: 2.5rem;
 }
 
 .superwrapper {
@@ -39,11 +40,12 @@ body {
 
 .header-left {
   margin-top: 1.6rem;
-  margin-left: 4.06rem;
+  margin-left: 4rem;
 }
 
 .header-right {
   margin: 0.7rem;
+  margin-right: 4rem;
 }
 
 .differentcolor {
@@ -87,7 +89,7 @@ hr {
   font-size: 3.75rem;
 }
 #textarea {
-  background: linear-gradient(to bottom, #e7e7fa, #dfdff9);
+  background: linear-gradient(to bottom, #e7e7fa, #e0e0f9);
   border: none;
   outline: none;
   resize: none;
