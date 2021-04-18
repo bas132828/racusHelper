@@ -68,7 +68,6 @@ copyTextareaBtn.addEventListener("click", function (event) {
   const copyTextarea = document.querySelector(".js-copytextarea");
   copyTextarea.focus();
   copyTextarea.select();
-
   try {
     const successful = document.execCommand("copy");
     const msg = successful ? "successful" : "unsuccessful";
@@ -76,4 +75,7 @@ copyTextareaBtn.addEventListener("click", function (event) {
   } catch (err) {
     console.log("Oops, unable to copy");
   }
+
+  //clears value in USD after using clipboard
+  val.value = "";
 });
