@@ -18,10 +18,9 @@ body {
 
 .main {
   width: 60rem;
-  height: 100vh;
+  height: 58rem;
   background-color: #c6c5ec;
   border-radius: 2.5rem;
-  overflow: scroll;
 }
 
 .superwrapper {
