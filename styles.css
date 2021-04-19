@@ -238,6 +238,15 @@ btn2 .btn:hover {
   );
 }
 
+.foot {
+  font-size: .5rem;
+  top:95%;
+  left:1%;
+  position: absolute;
+  color: #c3c3f5;
+}
+
+
 /*Responsive design*/
 
 @media (max-width: 900px) {

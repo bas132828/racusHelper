@@ -19,6 +19,7 @@ const usdValue = async function () {
 
   usdPrice = data.Valute.USD.Value;
   rate.textContent = usdPrice;
+  console.log(data)
 };
 
 usdValue();
