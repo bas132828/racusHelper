@@ -22,7 +22,7 @@ body {
 
 .main {
   width: 60rem;
-  height: 58rem;
+  height: 57.5rem;
   /* background: #c6c5ec; */
   border-radius: 2.5rem;
 
@@ -31,7 +31,7 @@ body {
     rgba(198, 197, 236, 0.8),
     rgba(198, 197, 236, 0.3)
   );
-  backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(.7rem);
   z-index: 3;
 }
 
@@ -178,7 +178,7 @@ btn2 .btn:hover {
 .circle1 {
   height: 15.5rem;
   width: 16.5rem;
-  top: 1%;
+  top: 3%;
   left: 50%;
   background: linear-gradient(
     to right bottom,
