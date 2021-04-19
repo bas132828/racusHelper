@@ -79,3 +79,13 @@ copyTextareaBtn.addEventListener("click", function (event) {
   //clears value in USD after using clipboard
   val.value = "";
 });
+
+//circle animation()
+
+const cirlce1 = document.querySelector(".circle1");
+const cirlce2 = document.querySelector(".circle2");
+const cirlce3 = document.querySelector(".circle3");
+const cirlce4 = document.querySelector(".circle4");
+const cirlce5 = document.querySelector(".circle5");
+
+console.log(cirlce1);

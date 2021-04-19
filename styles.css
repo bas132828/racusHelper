@@ -7,7 +7,11 @@
 }
 
 body {
-  background-color: #fff;
+  background: linear-gradient(
+    to right top,
+    rgba(198, 197, 236, 0.3),
+    rgba(198, 197, 236, 0.1)
+  );
   font-family: "Inter", sans-serif;
   font-size: 100%;
   font-weight: 400;
@@ -19,8 +23,16 @@ body {
 .main {
   width: 60rem;
   height: 58rem;
-  background-color: #c6c5ec;
+  /* background: #c6c5ec; */
   border-radius: 2.5rem;
+
+  background: linear-gradient(
+    to right bottom,
+    rgba(198, 197, 236, 0.8),
+    rgba(198, 197, 236, 0.3)
+  );
+  backdrop-filter: blur(0.5rem);
+  z-index: 3;
 }
 
 .superwrapper {
@@ -69,13 +81,18 @@ hr {
   width: 43.75rem;
   height: 45.12rem;
   margin-top: 0.87rem;
-  background: linear-gradient(to bottom, #ffffff, #b3b1f1);
+
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.3)
+  );
   text-align: center;
   border-radius: 2.5rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding-top: 8rem;
   z-index: 3;
-  opacity: 0.9;
+  backdrop-filter: blur(3rem);
 }
 
 .typewindow {
@@ -83,7 +100,8 @@ hr {
   border-bottom: 2px solid #9d9adb;
   outline: none;
   padding: 0.5rem;
-  background: linear-gradient(to bottom, #f1f1fc, #ebebfb);
+  background-color: #eeecf8;
+  opacity: 0.4;
   font-size: 2rem;
   font-family: inherit;
 }
@@ -94,7 +112,8 @@ hr {
   font-size: 3.75rem;
 }
 #textarea {
-  background: linear-gradient(to bottom, #e7e7fa, #e0e0f9);
+  background-color: #eeeefa;
+  opacity: 0.5;
   border: none;
   outline: none;
   resize: none;
@@ -102,6 +121,7 @@ hr {
   text-align: center;
   font-family: inherit;
   font-weight: bold;
+  tex
 }
 
 .btn {
@@ -158,41 +178,62 @@ btn2 .btn:hover {
 .circle1 {
   height: 15.5rem;
   width: 16.5rem;
-  top: 6rem;
-  left: 72rem;
-  background-color: #655679;
+  top: 1%;
+  left: 50%;
+  background: linear-gradient(
+    to right bottom,
+    rgba(101, 86, 121, 0.9),
+    rgba(101, 86, 121, 0.1)
+  );
 }
 
 .circle2 {
   height: 30rem;
   width: 30rem;
-  top: 28rem;
-  left: 5rem;
-  background-color: #7f7be4;
+  top: 44%;
+  left: 3%;
+  background: linear-gradient(
+    to top,
+    rgba(127, 123, 228, 0.9),
+    rgba(127, 123, 228, 0.1)
+  );
 }
 
 .circle3 {
   height: 35rem;
   width: 35rem;
-  top: 30rem;
-  left: 58rem;
-  background-color: #a36ea3;
+  top: 37%;
+  left: 66%;
+  background: linear-gradient(
+    to right bottom,
+    rgba(163, 110, 163, 0.9),
+    rgba(163, 110, 163, 0.1)
+  );
 }
 
 .circle4 {
   height: 16rem;
   width: 16rem;
-  top: 12rem;
-  left: 34rem;
-  background-color: #a36ea3;
+  top: 20%;
+  left: 26%;
+  background: linear-gradient(
+    to left bottom,
+    rgba(163, 110, 163, 0.9),
+    rgba(163, 110, 163, 0.1)
+  );
 }
 
 .circle5 {
   height: 4rem;
   width: 4rem;
-  top: 7.5rem;
-  left: 30rem;
-  background-color: #a36ea3;
+  top: 15%;
+  left: 24%;
+
+  background: linear-gradient(
+    to right bottom,
+    rgba(163, 110, 163, 0.9),
+    rgba(163, 110, 163, 0.1)
+  );
 }
 
 /*Responsive design*/
