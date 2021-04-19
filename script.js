@@ -51,11 +51,11 @@ const calc = function (e) {
   } коп.`;
   apiAdvice();
 
-  // console.log(toPay);
-  // if (toPay > 100000) {
-  //   nuts.style.display = "flex";
-  //   setTimeout(() => (nuts.style.display = "none"), 50);
-  // }
+  console.log(toPay);
+  if (toPay > 100000) {
+    nuts.style.display = "flex";
+    setTimeout(() => (nuts.style.display = "none"), 50);
+  }
 };
 
 btn.addEventListener("click", calc);
