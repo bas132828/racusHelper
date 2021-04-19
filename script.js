@@ -16,8 +16,7 @@ renewPage();
 const usdValue = async function () {
   const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
   const data = await resp.json();
-  // console.log(data)
-  // console.log(data.Valute.USD.Value);
+
   usdPrice = data.Valute.USD.Value;
   rate.textContent = usdPrice;
 };
@@ -34,7 +33,6 @@ async function apiAdvice() {
 
   const data = await resp.json();
 
-  console.log(data.slip.advice);
   render(`${data.slip.advice}`);
 }
 apiAdvice();
@@ -51,11 +49,11 @@ const calc = function (event) {
   } коп.`;
   apiAdvice();
 
-  console.log(toPay);
-  if (toPay > 100000) {
-    nuts.style.display = "flex";
-    setTimeout(() => (nuts.style.display = "none"), 50);
-  }
+  // console.log(toPay);
+  // if (toPay > 100000) {
+  //   nuts.style.display = "flex";
+  //   setTimeout(() => (nuts.style.display = "none"), 50);
+  // }
 };
 
 btn.addEventListener("click", calc);
@@ -64,7 +62,7 @@ btn.addEventListener("click", calc);
 //using enter
 document.addEventListener('keydown', function(e) {
   if(e.key ==='Enter')  { 
-    e.preventDefault();
+  e.preventDefault();
   const value = document.querySelector(".price").value;
 
   if (!Number(val.value)) return renewPage();
@@ -104,4 +102,3 @@ const cirlce3 = document.querySelector(".circle3");
 const cirlce4 = document.querySelector(".circle4");
 const cirlce5 = document.querySelector(".circle5");
 
-console.log(cirlce1);
