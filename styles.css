@@ -31,7 +31,7 @@ body {
     rgba(198, 197, 236, 0.8),
     rgba(198, 197, 236, 0.3)
   );
-  backdrop-filter: blur(.7rem);
+  backdrop-filter: blur(0.7rem);
   z-index: 3;
 }
 
@@ -121,7 +121,6 @@ hr {
   text-align: center;
   font-family: inherit;
   font-weight: bold;
-  tex
 }
 
 .btn {
@@ -136,7 +135,8 @@ hr {
   border: none;
   outline: none;
 }
-btn2 .btn:hover {
+
+.btn:hover {
   transform: translateY(-0.1rem);
   box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
 }
@@ -167,7 +167,6 @@ btn2 .btn:hover {
 .imageW {
   display: none;
   justify-content: center;
-
 }
 
 /* Circles*/
@@ -293,18 +292,17 @@ btn2 .btn:hover {
   .header {
     margin-bottom: 1rem;
   }
-  
+
   .circle1 {
     height: 7rem;
     width: 7rem;
   }
-  
-  
+
   .circle2 {
     height: 20rem;
     width: 20rem;
   }
-  
+
   .circle3 {
     display: none;
   }
@@ -318,5 +316,4 @@ btn2 .btn:hover {
     height: 1rem;
     width: 1rem;
   }
-  }
-  
+}
