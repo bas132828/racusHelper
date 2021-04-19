@@ -2,10 +2,10 @@
 const rate = document.querySelector(".rate");
 const result = document.querySelector(".result");
 const btn = document.querySelector(".btn");
-let val = document.querySelector(".price");
+// let val = document.querySelector(".price");
 const text = document.querySelector(".quote");
 const nuts = document.querySelector(".imageW");
-
+let newValue;
 let usdPrice;
 
 const renewPage = function () {
@@ -19,7 +19,7 @@ const usdValue = async function () {
 
   usdPrice = data.Valute.USD.Value;
   rate.textContent = usdPrice;
-  console.log(data)
+  console.log(data);
 };
 
 usdValue();
@@ -38,16 +38,23 @@ async function apiAdvice() {
 }
 apiAdvice();
 
-const calc = function (event) {
-  event.preventDefault;
-  const value = document.querySelector(".price").value;
-
-  if (!Number(val.value)) return renewPage();
-
+const calcPaymentShow = function (usdPrice, value) {
   const toPay = Number(usdPrice) * Number(value);
   result.textContent = `${Math.trunc(toPay)} руб. ${
     Math.trunc(toPay * 100) % 100
   } коп.`;
+};
+
+const calc = function (event) {
+  event.preventDefault();
+  const value = document.querySelector(".price").value;
+  if (value.includes(",")) {
+    newValue = value.replace(",", ".");
+    if (!Number(newValue)) return renewPage();
+    calcPaymentShow(usdPrice, newValue);
+  }
+  if (!Number(value)) return renewPage();
+  calcPaymentShow(usdPrice, value);
   apiAdvice();
 
   // console.log(toPay);
@@ -59,28 +66,29 @@ const calc = function (event) {
 
 btn.addEventListener("click", calc);
 
-
 //using enter
-document.addEventListener('keydown', function(e) {
+document.addEventListener("keydown", function (e) {
   // if (e.key === 'Escape'){
   //   console.log(val.value)
   //  }
 
-  if(e.key ==='Enter')  { 
-  e.preventDefault();
-  const value = document.querySelector(".price").value;
+  if (e.key === "Enter") {
+    e.preventDefault();
+    const value = document.querySelector(".price").value;
 
-  if (!Number(val.value)) return renewPage();
+    if (!Number(value)) return renewPage();
 
-  const toPay = Number(usdPrice) * Number(value);
-  result.textContent = `${Math.trunc(toPay)} руб. ${
-    Math.trunc(toPay * 100) % 100
-  } коп.`;
-  apiAdvice();
- 
-}
+    calcPaymentShow(usdPrice, value);
+    apiAdvice();
+  }
 
-})
+  if (e.key === "Escape") {
+    e.preventDefault();
+    renewPage();
+    result.value = " ";
+    apiAdvice();
+  }
+});
 //copy to clipboard feature
 
 const copyTextareaBtn = document.querySelector(".js-textareacopybtn");
@@ -108,5 +116,3 @@ const cirlce2 = document.querySelector(".circle2");
 const cirlce3 = document.querySelector(".circle3");
 const cirlce4 = document.querySelector(".circle4");
 const cirlce5 = document.querySelector(".circle5");
-
-
