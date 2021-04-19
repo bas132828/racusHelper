@@ -39,8 +39,8 @@ async function apiAdvice() {
 }
 apiAdvice();
 
-const calc = function (e) {
-  e.preventDefault;
+const calc = function (event) {
+  event.preventDefault;
   const value = document.querySelector(".price").value;
 
   if (!Number(val.value)) return renewPage();
@@ -60,6 +60,22 @@ const calc = function (e) {
 
 btn.addEventListener("click", calc);
 
+
+//using enter
+document.addEventListener('keydown', function(e) {
+  if(e.key ==='Enter')  { 
+    e.preventDefault();
+  const value = document.querySelector(".price").value;
+
+  if (!Number(val.value)) return renewPage();
+
+  const toPay = Number(usdPrice) * Number(value);
+  result.textContent = `${Math.trunc(toPay)} руб. ${
+    Math.trunc(toPay * 100) % 100
+  } коп.`;
+  apiAdvice();
+}
+})
 //copy to clipboard feature
 
 const copyTextareaBtn = document.querySelector(".js-textareacopybtn");
