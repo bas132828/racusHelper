@@ -203,7 +203,7 @@ btn2 .btn:hover {
   height: 35rem;
   width: 35rem;
   top: 37%;
-  left: 66%;
+  left: 55%;
   background: linear-gradient(
     to right bottom,
     rgba(163, 110, 163, 0.9),
@@ -282,4 +282,30 @@ btn2 .btn:hover {
   .header {
     margin-bottom: 1rem;
   }
-}
+  
+  .circle1 {
+    height: 7rem;
+    width: 7rem;
+  }
+  
+  
+  .circle2 {
+    height: 20rem;
+    width: 20rem;
+  }
+  
+  .circle3 {
+    display: none;
+  }
+
+  .circle4 {
+    height: 4rem;
+    width: 4rem;
+  }
+
+  .circle5 {
+    height: 1rem;
+    width: 1rem;
+  }
+  }
+  
