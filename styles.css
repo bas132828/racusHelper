@@ -8,7 +8,7 @@
 
 body {
   background: linear-gradient(
-    to right top,
+    from bottom to top,
     rgba(198, 197, 236, 0.3),
     rgba(198, 197, 236, 0.1)
   );
@@ -22,8 +22,8 @@ body {
 
 .main {
   width: 60rem;
-  height: 57.5rem;
-  /* background: #c6c5ec; */
+  height: 58rem;
+
   border-radius: 2.5rem;
 
   background: linear-gradient(
