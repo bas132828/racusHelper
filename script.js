@@ -62,6 +62,10 @@ btn.addEventListener("click", calc);
 
 //using enter
 document.addEventListener('keydown', function(e) {
+  // if (e.key === 'Escape'){
+  //   console.log(val.value)
+  //  }
+
   if(e.key ==='Enter')  { 
   e.preventDefault();
   const value = document.querySelector(".price").value;
@@ -73,7 +77,9 @@ document.addEventListener('keydown', function(e) {
     Math.trunc(toPay * 100) % 100
   } коп.`;
   apiAdvice();
+ 
 }
+
 })
 //copy to clipboard feature
 
