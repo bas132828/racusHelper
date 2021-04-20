@@ -79,6 +79,17 @@ document.addEventListener("keydown", function (e) {
       if (!Number(newValue)) return renewPage();
       calcPaymentShow(usdPrice, newValue);
     }
+    if (value.includes("?")) {
+      newValue = value.replace("?", ".");
+      if (!Number(newValue)) return renewPage();
+      calcPaymentShow(usdPrice, newValue);
+    }
+
+    if (value.includes("/")) {
+      newValue = value.replace("/", ".");
+      if (!Number(newValue)) return renewPage();
+      calcPaymentShow(usdPrice, newValue);
+    }
     if (!Number(value)) return renewPage();
     calcPaymentShow(usdPrice, value);
     apiAdvice();
