@@ -35,6 +35,7 @@ async function apiAdvice() {
 
   render(`${data.slip.advice}`);
 }
+
 apiAdvice();
 
 const calcPaymentShow = function (usdPrice, value) {
@@ -54,7 +55,7 @@ const calc = function (event) {
   }
   if (!Number(value)) return renewPage();
   calcPaymentShow(usdPrice, value);
-  apiAdvice();
+  // apiAdvice();
   renewPage();
   // console.log(toPay);
   // if (toPay > 100000) {
@@ -89,12 +90,12 @@ document.addEventListener("keydown", function (e) {
     }
     if (!Number(value)) return renewPage();
     calcPaymentShow(usdPrice, value);
-    apiAdvice();
+    // apiAdvice();
 
     if (!Number(value)) return renewPage();
 
     calcPaymentShow(usdPrice, value);
-    apiAdvice();
+    // apiAdvice();
     renewPage();
     copyBarra();
   }
