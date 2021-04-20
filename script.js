@@ -119,22 +119,22 @@ const autoClipboard = function (event) {
   const copyTextarea = document.querySelector(".js-copytextarea");
   copyTextarea.focus();
   copyTextarea.select();
-  try {
-    const successful = document.execCommand("copy");
-    const msg = successful ? "successful" : "unsuccessful";
-    // console.log("Copying text command was " + msg);
-  } catch (err) {
-    console.log("Oops, unable to copy");
-  }
+  window.navigator.clipboard.writeText(copyTextarea.value)
 };
 
 copyTextareaBtn.addEventListener("click",  autoClipboard);
 
+
+// copyButton.addEventListener('click', () => {
+//   window.navigator.clipboard.writeText(input.value)
+// })
+
+
 //circle animation()
 
-const cirlce1 = document.querySelector(".circle1");
-const cirlce2 = document.querySelector(".circle2");
-const cirlce3 = document.querySelector(".circle3");
-const cirlce4 = document.querySelector(".circle4");
-const cirlce5 = document.querySelector(".circle5");
+// const cirlce1 = document.querySelector(".circle1");
+// const cirlce2 = document.querySelector(".circle2");
+// const cirlce3 = document.querySelector(".circle3");
+// const cirlce4 = document.querySelector(".circle4");
+// const cirlce5 = document.querySelector(".circle5");
 
