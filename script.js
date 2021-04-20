@@ -75,6 +75,14 @@ document.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     e.preventDefault();
     const value = document.querySelector(".price").value;
+    if (value.includes(",")) {
+      newValue = value.replace(",", ".");
+      if (!Number(newValue)) return renewPage();
+      calcPaymentShow(usdPrice, newValue);
+    }
+    if (!Number(value)) return renewPage();
+    calcPaymentShow(usdPrice, value);
+    apiAdvice();
 
     if (!Number(value)) return renewPage();
 
@@ -82,12 +90,12 @@ document.addEventListener("keydown", function (e) {
     apiAdvice();
   }
 
-  if (e.key === "Escape") {
-    e.preventDefault();
-    renewPage();
-    result.value = " ";
-    apiAdvice();
-  }
+  // if (e.key === "Escape") {
+  //   e.preventDefault();
+  //   renewPage();
+  //   result.value = " ";
+  //   apiAdvice();
+  // }
 });
 //copy to clipboard feature
 
