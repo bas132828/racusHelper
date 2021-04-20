@@ -18,7 +18,7 @@ const usdValue = async function () {
 
   usdPrice = data.Valute.USD.Value;
   rate.textContent = usdPrice;
-  console.log(data);
+  rate.insertAdjacentText("beforeend", ` ${  new Date(data.Date).toLocaleDateString('ru')}`)
 };
 
 usdValue();
@@ -119,7 +119,7 @@ const copyBarra = function (event) {
   try {
     const successful = document.execCommand("copy");
     const msg = successful ? "successful" : "unsuccessful";
-    console.log("Copying text command was " + msg);
+    // console.log("Copying text command was " + msg);
   } catch (err) {
     console.log("Oops, unable to copy");
   }
@@ -135,5 +135,3 @@ const cirlce3 = document.querySelector(".circle3");
 const cirlce4 = document.querySelector(".circle4");
 const cirlce5 = document.querySelector(".circle5");
 
-console.dir(result);
-console.log(result.value);
