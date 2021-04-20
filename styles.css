@@ -238,13 +238,12 @@ hr {
 }
 
 .foot {
-  font-size: .5rem;
-  top:95%;
-  left:1%;
+  font-size: 0.5rem;
+  top: 95%;
+  left: 1%;
   position: absolute;
   color: #c3c3f5;
 }
-
 
 /*Responsive design*/
 
@@ -317,3 +316,5 @@ hr {
     width: 1rem;
   }
 }
+
+/* animation circles*/
