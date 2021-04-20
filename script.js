@@ -55,7 +55,7 @@ const calc = function (event) {
   if (!Number(value)) return renewPage();
   calcPaymentShow(usdPrice, value);
   apiAdvice();
-
+  renewPage();
   // console.log(toPay);
   // if (toPay > 100000) {
   //   nuts.style.display = "flex";
@@ -113,7 +113,7 @@ copyTextareaBtn.addEventListener("click", function (event) {
   }
 
   //clears value in USD after using clipboard
-  val.value = "";
+  renewPage();
 });
 
 //circle animation()
