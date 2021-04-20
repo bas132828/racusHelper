@@ -87,13 +87,13 @@ document.addEventListener("keydown", function (e) {
 
     calcPaymentShow(usdPrice, value);
     apiAdvice();
+    renewPage();
   }
 
   if (e.key === "Escape") {
     e.preventDefault();
     renewPage();
     result.textContent = "";
-    // apiAdvice();
   }
 });
 //copy to clipboard feature
@@ -111,9 +111,6 @@ copyTextareaBtn.addEventListener("click", function (event) {
   } catch (err) {
     console.log("Oops, unable to copy");
   }
-
-  //clears value in USD after using clipboard
-  renewPage();
 });
 
 //circle animation()
