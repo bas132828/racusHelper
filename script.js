@@ -88,6 +88,7 @@ document.addEventListener("keydown", function (e) {
     calcPaymentShow(usdPrice, value);
     apiAdvice();
     renewPage();
+    copyBarra();
   }
 
   if (e.key === "Escape") {
@@ -100,7 +101,7 @@ document.addEventListener("keydown", function (e) {
 
 const copyTextareaBtn = document.querySelector(".js-textareacopybtn");
 
-copyTextareaBtn.addEventListener("click", function (event) {
+const copyBarra = function (event) {
   const copyTextarea = document.querySelector(".js-copytextarea");
   copyTextarea.focus();
   copyTextarea.select();
@@ -111,7 +112,9 @@ copyTextareaBtn.addEventListener("click", function (event) {
   } catch (err) {
     console.log("Oops, unable to copy");
   }
-});
+};
+
+copyTextareaBtn.addEventListener("click", copyBarra);
 
 //circle animation()
 
