@@ -4,8 +4,21 @@ const result = document.querySelector(".result");
 const btn = document.querySelector(".btn");
 const text = document.querySelector(".quote");
 const nuts = document.querySelector(".imageW");
+const nightModeSheet = document.getElementById("night-theme");
+const lightModeSheet = document.getElementById("normal-theme");
+const toggle = document.getElementById("toggle-button");
 let newValue;
 let usdPrice;
+
+toggle.addEventListener("change", function (e) {
+  if (toggle.checked) {
+    document
+      .getElementById("normal-theme")
+      .setAttribute("href", "styles-night.css");
+  } else {
+    document.getElementById("normal-theme").setAttribute("href", "styles.css");
+  }
+});
 
 const renewPage = function () {
   document.querySelector(".price").value = "";

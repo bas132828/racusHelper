@@ -11,7 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css" id="normal-theme" />
+    <!-- <link rel="stylesheet" href="styles-night.css" id="night-theme" /> -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -22,6 +23,10 @@
     <script defer src="script.js"></script>
   </head>
   <body>
+    <div class="container night">
+      <input type="checkbox" id="toggle-button" class="toggle-button" />
+      <label for="toggle-button" class="text"></label>
+    </div>
     <div class="superwrapper">
       <div class="main">
         <div class="flex-parent header">

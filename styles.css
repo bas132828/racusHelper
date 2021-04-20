@@ -40,6 +40,48 @@ body {
   justify-content: center;
 }
 
+/*Night Mode*/
+.toggle-button {
+  position: relative;
+  left: 95%;
+  width: 6.25rem;
+  height: 3.1rem;
+  background: #f2f2fb;
+  border: 1px solid #c5c0cd;
+  border-radius: 1.8rem;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  align-items: left;
+  margin-top: 1rem;
+  transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+}
+.toggle-button::after {
+  content: "";
+  position: absolute;
+  background-color: #d6d4f6;
+  left: 0.18rem;
+  top: 0.093rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  transform: translateX(0);
+  transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+}
+.toggle-button:checked::after {
+  transform: translateX(calc(100% + 0.18rem));
+  background-color: #f2f2fb;
+}
+
+.toggle-button:checked {
+  background-color: #988ea6;
+}
+
+.night-mode {
+  background-color: black;
+}
 /* header */
 .flex-parent {
   display: flex;
@@ -190,6 +232,7 @@ hr {
     rgba(101, 86, 121, 0.9),
     rgba(101, 86, 121, 0.1)
   );
+  animation: scl 6s;
 }
 
 .circle2 {
@@ -202,18 +245,20 @@ hr {
     rgba(127, 123, 228, 0.9),
     rgba(127, 123, 228, 0.1)
   );
+  animation: scl 5s;
 }
 
 .circle3 {
-  height: 35rem;
-  width: 35rem;
-  top: 37%;
-  left: 55%;
+  height: 25rem;
+  width: 25rem;
+  top: 58%;
+  left: 57%;
   background: linear-gradient(
     to right bottom,
     rgba(163, 110, 163, 0.9),
     rgba(163, 110, 163, 0.1)
   );
+  animation: scl 10s;
 }
 
 .circle4 {
@@ -226,6 +271,7 @@ hr {
     rgba(163, 110, 163, 0.9),
     rgba(163, 110, 163, 0.1)
   );
+  animation: scl 12s;
 }
 
 .circle5 {
@@ -239,6 +285,7 @@ hr {
     rgba(163, 110, 163, 0.9),
     rgba(163, 110, 163, 0.1)
   );
+  animation: scl 15s;
 }
 
 .foot {
