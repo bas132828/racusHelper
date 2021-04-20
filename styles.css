@@ -318,3 +318,14 @@ hr {
 }
 
 /* animation circles*/
+@keyframes scl {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacyty: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
