@@ -35,7 +35,6 @@ async function apiAdvice() {
 
   render(`${data.slip.advice}`);
 }
-
 apiAdvice();
 
 const calcPaymentShow = function (usdPrice, value) {
@@ -55,7 +54,7 @@ const calc = function (event) {
   }
   if (!Number(value)) return renewPage();
   calcPaymentShow(usdPrice, value);
-  // apiAdvice();
+  apiAdvice();
   renewPage();
   // console.log(toPay);
   // if (toPay > 100000) {
@@ -66,8 +65,11 @@ const calc = function (event) {
 
 btn.addEventListener("click", calc);
 
-//using enter, esc, 
+//using enter
 document.addEventListener("keydown", function (e) {
+  // if (e.key === 'Escape'){
+  //   console.log(val.value)
+  //  }
 
   if (e.key === "Enter") {
     e.preventDefault();
@@ -90,12 +92,12 @@ document.addEventListener("keydown", function (e) {
     }
     if (!Number(value)) return renewPage();
     calcPaymentShow(usdPrice, value);
-    // apiAdvice();
+    apiAdvice();
 
     if (!Number(value)) return renewPage();
 
     calcPaymentShow(usdPrice, value);
-    // apiAdvice();
+    apiAdvice();
     renewPage();
     copyBarra();
   }
@@ -127,8 +129,11 @@ copyTextareaBtn.addEventListener("click", copyBarra);
 
 //circle animation()
 
-// const cirlce1 = document.querySelector(".circle1");
-// const cirlce2 = document.querySelector(".circle2");
-// const cirlce3 = document.querySelector(".circle3");
-// const cirlce4 = document.querySelector(".circle4");
-// const cirlce5 = document.querySelector(".circle5");
+const cirlce1 = document.querySelector(".circle1");
+const cirlce2 = document.querySelector(".circle2");
+const cirlce3 = document.querySelector(".circle3");
+const cirlce4 = document.querySelector(".circle4");
+const cirlce5 = document.querySelector(".circle5");
+
+console.dir(result);
+console.log(result.value);
