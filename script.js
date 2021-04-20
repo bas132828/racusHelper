@@ -2,7 +2,6 @@
 const rate = document.querySelector(".rate");
 const result = document.querySelector(".result");
 const btn = document.querySelector(".btn");
-// let val = document.querySelector(".price");
 const text = document.querySelector(".quote");
 const nuts = document.querySelector(".imageW");
 let newValue;
@@ -90,12 +89,12 @@ document.addEventListener("keydown", function (e) {
     apiAdvice();
   }
 
-  // if (e.key === "Escape") {
-  //   e.preventDefault();
-  //   renewPage();
-  //   result.value = " ";
-  //   apiAdvice();
-  // }
+  if (e.key === "Escape") {
+    e.preventDefault();
+    renewPage();
+    result.textContent = "";
+    // apiAdvice();
+  }
 });
 //copy to clipboard feature
 
@@ -124,3 +123,6 @@ const cirlce2 = document.querySelector(".circle2");
 const cirlce3 = document.querySelector(".circle3");
 const cirlce4 = document.querySelector(".circle4");
 const cirlce5 = document.querySelector(".circle5");
+
+console.dir(result);
+console.log(result.value);
