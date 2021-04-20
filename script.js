@@ -65,11 +65,8 @@ const calc = function (event) {
 
 btn.addEventListener("click", calc);
 
-//using enter
+//using enter, esc, 
 document.addEventListener("keydown", function (e) {
-  // if (e.key === 'Escape'){
-  //   console.log(val.value)
-  //  }
 
   if (e.key === "Enter") {
     e.preventDefault();
@@ -129,11 +126,8 @@ copyTextareaBtn.addEventListener("click", copyBarra);
 
 //circle animation()
 
-const cirlce1 = document.querySelector(".circle1");
-const cirlce2 = document.querySelector(".circle2");
-const cirlce3 = document.querySelector(".circle3");
-const cirlce4 = document.querySelector(".circle4");
-const cirlce5 = document.querySelector(".circle5");
-
-console.dir(result);
-console.log(result.value);
+// const cirlce1 = document.querySelector(".circle1");
+// const cirlce2 = document.querySelector(".circle2");
+// const cirlce3 = document.querySelector(".circle3");
+// const cirlce4 = document.querySelector(".circle4");
+// const cirlce5 = document.querySelector(".circle5");
