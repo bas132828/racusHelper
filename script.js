@@ -78,20 +78,20 @@ document.addEventListener("keydown", function (e) {
       newValue = value.replace(",", ".");
       if (!Number(newValue)) return renewPage();
       calcPaymentShow(usdPrice, newValue);
-      copyBarra();
+      autoClipboard();
     }
     if (value.includes("?")) {
       newValue = value.replace("?", ".");
       if (!Number(newValue)) return renewPage();
       calcPaymentShow(usdPrice, newValue);
-      copyBarra();
+      autoClipboard();
     }
 
     if (value.includes("/")) {
       newValue = value.replace("/", ".");
       if (!Number(newValue)) return renewPage();
       calcPaymentShow(usdPrice, newValue);
-      copyBarra();
+      autoClipboard();
     }
     if (!Number(value)) return renewPage();
     calcPaymentShow(usdPrice, value);
@@ -102,7 +102,7 @@ document.addEventListener("keydown", function (e) {
     calcPaymentShow(usdPrice, value);
     apiAdvice();
     renewPage();
-    copyBarra();
+    autoClipboard();
   }
 
   if (e.key === "Escape") {
@@ -115,7 +115,7 @@ document.addEventListener("keydown", function (e) {
 
 const copyTextareaBtn = document.querySelector(".js-textareacopybtn");
 
-const copyBarra = function (event) {
+const autoClipboard = function (event) {
   const copyTextarea = document.querySelector(".js-copytextarea");
   copyTextarea.focus();
   copyTextarea.select();
@@ -128,7 +128,7 @@ const copyBarra = function (event) {
   }
 };
 
-copyTextareaBtn.addEventListener("click", copyBarra);
+copyTextareaBtn.addEventListener("click",  autoClipboard);
 
 //circle animation()
 
