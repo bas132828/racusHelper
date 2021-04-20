@@ -78,17 +78,20 @@ document.addEventListener("keydown", function (e) {
       newValue = value.replace(",", ".");
       if (!Number(newValue)) return renewPage();
       calcPaymentShow(usdPrice, newValue);
+      copyBarra();
     }
     if (value.includes("?")) {
       newValue = value.replace("?", ".");
       if (!Number(newValue)) return renewPage();
       calcPaymentShow(usdPrice, newValue);
+      copyBarra();
     }
 
     if (value.includes("/")) {
       newValue = value.replace("/", ".");
       if (!Number(newValue)) return renewPage();
       calcPaymentShow(usdPrice, newValue);
+      copyBarra();
     }
     if (!Number(value)) return renewPage();
     calcPaymentShow(usdPrice, value);
