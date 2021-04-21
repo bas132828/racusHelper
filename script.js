@@ -72,7 +72,7 @@ async function apiAdvice() {
 }
 apiAdvice();
 
-const calcPaymentShow = function (Price, value) {
+const calcPaymentShow = function (value) {
   if (toggleCur.checked) {
     const toPay = Number(eurPrice) * Number(value);
     result.textContent = `${Math.trunc(toPay)} руб. ${
@@ -92,10 +92,10 @@ const calc = function (event) {
   if (value.includes(",")) {
     newValue = value.replace(",", ".");
     if (!Number(newValue)) return renewPage();
-    calcPaymentShow(usdPrice, newValue);
+    calcPaymentShow(newValue);
   }
   if (!Number(value)) return renewPage();
-  calcPaymentShow(usdPrice, value);
+  calcPaymentShow(value);
   apiAdvice();
   renewPage();
   // console.log(toPay);
@@ -119,29 +119,29 @@ document.addEventListener("keydown", function (e) {
     if (value.includes(",")) {
       newValue = value.replace(",", ".");
       if (!Number(newValue)) return renewPage();
-      calcPaymentShow(usdPrice, newValue);
+      calcPaymentShow(newValue);
       autoClipboard();
     }
     if (value.includes("?")) {
       newValue = value.replace("?", ".");
       if (!Number(newValue)) return renewPage();
-      calcPaymentShow(usdPrice, newValue);
+      calcPaymentShow(newValue);
       autoClipboard();
     }
 
     if (value.includes("/")) {
       newValue = value.replace("/", ".");
       if (!Number(newValue)) return renewPage();
-      calcPaymentShow(usdPrice, newValue);
+      calcPaymentShow(newValue);
       autoClipboard();
     }
     if (!Number(value)) return renewPage();
-    calcPaymentShow(usdPrice, value);
+    calcPaymentShow(value);
     apiAdvice();
 
     if (!Number(value)) return renewPage();
 
-    calcPaymentShow(usdPrice, value);
+    calcPaymentShow(value);
     apiAdvice();
     renewPage();
     autoClipboard();
