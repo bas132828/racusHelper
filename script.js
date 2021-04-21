@@ -19,10 +19,32 @@ toggleNight.addEventListener("change", function (e) {
     document
       .getElementById("normal-theme")
       .setAttribute("href", "styles-night.css");
+      localStorage.setItem("theme", "dark");
+
   } else {
     document.getElementById("normal-theme").setAttribute("href", "styles.css");
+    localStorage.setItem("theme", "light");
   }
 });
+
+let currentTheme = localStorage.getItem('theme');
+
+console.log(currentTheme)
+
+const initialTheme = function() {
+ if(currentTheme==='dark')
+  {
+    document
+      .getElementById("normal-theme")
+      .setAttribute("href", "styles-night.css");
+      toggleNight.checked = true;
+  }
+  if(currentTheme==='light') {
+    document.getElementById("normal-theme").setAttribute("href", "styles.css");
+  }
+}
+initialTheme()
+
 
 const renewPage = function () {
   document.querySelector(".price").value = "";
@@ -44,6 +66,9 @@ toggleCur.addEventListener("change", function () {
   }
 });
 
+
+
+
 const usdValue = async function () {
   const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
   const data = await resp.json();
@@ -51,7 +76,7 @@ const usdValue = async function () {
   usdPrice = data.Valute.USD.Value;
   eurPrice = data.Valute.EUR.Value;
   curDate = new Date(data.Date).toLocaleDateString("ru");
-  
+
   toggleCur.checked ? changeRate(eurPrice) : changeRate(usdPrice);
 };
 
@@ -166,3 +191,4 @@ const autoClipboard = function (event) {
 copyTextareaBtn.addEventListener("click", autoClipboard);
 
 //toggling currency
+
