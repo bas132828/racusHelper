@@ -23,18 +23,26 @@
     <script defer src="script.js"></script>
   </head>
   <body>
-    <div class="container night">
+    <label for="toggle-button" class="night">
       <input type="checkbox" id="toggle-button" class="toggle-button" />
-      <label for="toggle-button" class="text"></label>
-    </div>
-    <div class="container currency">
+      <span class="moon-sun">
+        <img class="img1toggle" src="image/half-moon.svg" alt="" />
+        <img class="img1toggle sun" src="image/sun.svg" alt="" />
+      </span>
+    </label>
+    <br />
+    <label for="toggle-currency" class="money">
       <input
         type="checkbox"
         id="toggle-currency"
         class="toggle-button-currency"
       />
-      <label for="toggle-currency" class="text"></label>
-    </div>
+      <span class="usd-euro">
+        <img class="img2toggle" src="image/euro.svg" alt="" />
+        <img class="img2toggle euro" src="image/dollar.svg" alt="" />
+      </span>
+    </label>
+
     <div class="superwrapper">
       <div class="main">
         <div class="flex-parent header">
@@ -86,5 +94,10 @@
   </body>
   <footer>
     <a href="https://www.cbr-xml-daily.ru/" class="foot">Курсы валют, API</a>
+    <!-- <div>
+      Icons made by
+      <a href="https://www.freepik.com" title="Freepik">Freepik</a> from
+      <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+    </div> -->
   </footer>
 </html>

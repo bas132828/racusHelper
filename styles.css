@@ -41,8 +41,8 @@ body {
 .toggle-button {
   position: relative;
   left: 95%;
-  width: 6.25rem;
-  height: 3.1rem;
+  width: 5rem;
+  height: 2.48rem;
   background: #f2f2fb;
   border: 1px solid #c5c0cd;
   border-radius: 1.8rem;
@@ -61,11 +61,12 @@ body {
   background-color: #d6d4f6;
   left: 0.18rem;
   top: 0.093rem;
-  width: 2.8rem;
-  height: 2.8rem;
+  width: 2.24rem;
+  height: 2.24rem;
   border-radius: 50%;
   transform: translateX(0);
-  transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+  transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.1);
+  z-index: 2;
 }
 .toggle-button:checked::after {
   transform: translateX(calc(100% + 0.18rem));
@@ -76,12 +77,39 @@ body {
   background-color: #988ea6;
 }
 
+.night {
+  display: inline-block;
+  position: relative;
+  width: 5rem;
+  height: 2.48rem;
+  left: 88%;
+}
+.moon-sun {
+  position: absolute;
+  width: 2.27rem;
+  height: 1.1rem;
+  top: 1.7rem;
+  left: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  opacity: 0.7;
+}
+.img1toggle {
+  height: 2.1rem;
+  width: auto;
+}
+
+.sun {
+  margin-left: 5px;
+}
 /*Currency button*/
 .toggle-button-currency {
   position: relative;
   left: 95%;
-  width: 6.25rem;
-  height: 3.1rem;
+  width: 5rem;
+  height: 2.48rem;
   background: #f2f2fb;
   border: 1px solid #c5c0cd;
   border-radius: 1.8rem;
@@ -100,11 +128,12 @@ body {
   background-color: #d6d4f6;
   left: 0.18rem;
   top: 0.093rem;
-  width: 2.8rem;
-  height: 2.8rem;
+  width: 2.24rem;
+  height: 2.24rem;
   border-radius: 50%;
   transform: translateX(0);
   transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+  z-index: 2;
 }
 .toggle-button-currency:checked::after {
   transform: translateX(calc(100% + 0.18rem));
@@ -113,6 +142,35 @@ body {
 
 .toggle-button-currency:checked {
   background-color: #f16f3bc2;
+}
+
+.money {
+  display: inline-block;
+  position: relative;
+  width: 5rem;
+  height: 2.48rem;
+  left: 88%;
+}
+.usd-euro {
+  position: absolute;
+  width: 2.27rem;
+  height: 1.1rem;
+  top: 1.7rem;
+  left: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  opacity: 0.7;
+}
+
+.img2toggle {
+  height: 2.1rem;
+  width: auto;
+}
+
+.euro {
+  margin-left: 7px;
 }
 
 /* header */
