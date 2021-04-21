@@ -6,12 +6,15 @@ const text = document.querySelector(".quote");
 const nuts = document.querySelector(".imageW");
 const nightModeSheet = document.getElementById("night-theme");
 const lightModeSheet = document.getElementById("normal-theme");
-const toggle = document.getElementById("toggle-button");
+const toggleNight = document.getElementById("toggle-button");
+const toggleCur = document.getElementById("toggle-currency");
+
 let newValue;
 let usdPrice;
+let eurPrice;
 
-toggle.addEventListener("change", function (e) {
-  if (toggle.checked) {
+toggleNight.addEventListener("change", function (e) {
+  if (toggleNight.checked) {
     document
       .getElementById("normal-theme")
       .setAttribute("href", "styles-night.css");
@@ -30,8 +33,13 @@ const usdValue = async function () {
   const data = await resp.json();
 
   usdPrice = data.Valute.USD.Value;
+  eurPrice = data.Valute.EUR.Value;
+  console.log(eurPrice, usdPrice);
   rate.textContent = usdPrice;
-  rate.insertAdjacentText("beforeend", ` ${  new Date(data.Date).toLocaleDateString('ru')}`)
+  rate.insertAdjacentText(
+    "beforeend",
+    ` ${new Date(data.Date).toLocaleDateString("ru")}`
+  );
 };
 
 usdValue();
@@ -132,22 +140,9 @@ const autoClipboard = function (event) {
   const copyTextarea = document.querySelector(".js-copytextarea");
   copyTextarea.focus();
   copyTextarea.select();
-  window.navigator.clipboard.writeText(copyTextarea.value)
+  window.navigator.clipboard.writeText(copyTextarea.value);
 };
 
-copyTextareaBtn.addEventListener("click",  autoClipboard);
+copyTextareaBtn.addEventListener("click", autoClipboard);
 
-
-// copyButton.addEventListener('click', () => {
-//   window.navigator.clipboard.writeText(input.value)
-// })
-
-
-//circle animation()
-
-// const cirlce1 = document.querySelector(".circle1");
-// const cirlce2 = document.querySelector(".circle2");
-// const cirlce3 = document.querySelector(".circle3");
-// const cirlce4 = document.querySelector(".circle4");
-// const cirlce5 = document.querySelector(".circle5");
-
+//toggling currency
