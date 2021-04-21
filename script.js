@@ -51,8 +51,7 @@ const usdValue = async function () {
   usdPrice = data.Valute.USD.Value;
   eurPrice = data.Valute.EUR.Value;
   curDate = new Date(data.Date).toLocaleDateString("ru");
-  console.log(curDate);
-
+  
   toggleCur.checked ? changeRate(eurPrice) : changeRate(usdPrice);
 };
 
