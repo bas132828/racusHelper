@@ -12,6 +12,7 @@ const toggleCur = document.getElementById("toggle-currency");
 let newValue;
 let usdPrice;
 let eurPrice;
+let curDate;
 
 toggleNight.addEventListener("change", function (e) {
   if (toggleNight.checked) {
@@ -26,20 +27,33 @@ toggleNight.addEventListener("change", function (e) {
 const renewPage = function () {
   document.querySelector(".price").value = "";
 };
-
 renewPage();
+
+// toggleCur.addEventListener("change");
+
+const changeRate = function (str) {
+  rate.textContent = str;
+  rate.insertAdjacentText("beforeend", ` ${curDate}`);
+};
+
+toggleCur.addEventListener("change", function () {
+  if (toggleCur.checked) {
+    changeRate(eurPrice);
+  } else {
+    changeRate(usdPrice);
+  }
+});
+
 const usdValue = async function () {
   const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
   const data = await resp.json();
 
   usdPrice = data.Valute.USD.Value;
   eurPrice = data.Valute.EUR.Value;
-  console.log(eurPrice, usdPrice);
-  rate.textContent = usdPrice;
-  rate.insertAdjacentText(
-    "beforeend",
-    ` ${new Date(data.Date).toLocaleDateString("ru")}`
-  );
+  curDate = new Date(data.Date).toLocaleDateString("ru");
+  console.log(curDate);
+
+  toggleCur.checked ? changeRate(eurPrice) : changeRate(usdPrice);
 };
 
 usdValue();
@@ -58,11 +72,18 @@ async function apiAdvice() {
 }
 apiAdvice();
 
-const calcPaymentShow = function (usdPrice, value) {
-  const toPay = Number(usdPrice) * Number(value);
-  result.textContent = `${Math.trunc(toPay)} руб. ${
-    Math.trunc(toPay * 100) % 100
-  } коп.`;
+const calcPaymentShow = function (Price, value) {
+  if (toggleCur.checked) {
+    const toPay = Number(eurPrice) * Number(value);
+    result.textContent = `${Math.trunc(toPay)} руб. ${
+      Math.trunc(toPay * 100) % 100
+    } коп.`;
+  } else {
+    const toPay = Number(usdPrice) * Number(value);
+    result.textContent = `${Math.trunc(toPay)} руб. ${
+      Math.trunc(toPay * 100) % 100
+    } коп.`;
+  }
 };
 
 const calc = function (event) {

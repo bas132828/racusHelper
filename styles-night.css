@@ -84,7 +84,7 @@ body {
   width: 6.25rem;
   height: 3.1rem;
   background: #f2f2fb;
-  border: 1px solid #c5c0cd;
+  border: 1px solid #cdc0ca;
   border-radius: 1.8rem;
   outline: none;
   cursor: pointer;
@@ -113,7 +113,7 @@ body {
 }
 
 .toggle-button-currency:checked {
-  background-color: #988ea6;
+  background-color: #f16f3bc2;
 }
 
 /* header */
