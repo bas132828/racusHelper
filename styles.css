@@ -95,6 +95,10 @@ body {
   -moz-appearance: none;
 }
 
+#toggle-button-mode:focus {
+  outline: none;
+}
+
 #toggle-button-mode::before {
   content: "";
   position: absolute;
@@ -177,6 +181,10 @@ body {
   box-shadow: 1px 1px 1px 1px rgb(78, 55, 168);
   -webkit-appearance: none;
   -moz-appearance: none;
+}
+
+#toggle-button-currency:focus {
+  outline: none;
 }
 
 #toggle-button-currency::before {
