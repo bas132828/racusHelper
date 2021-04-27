@@ -302,6 +302,7 @@ body {
   width: auto;
   top: -1%;
   left: 52%;
+  animation: moveDown 0.2s;
 }
 .pictureSun {
   position: absolute;
@@ -311,6 +312,7 @@ body {
   width: auto;
   top: -4%;
   left: 16%;
+  animation: moveDown 0.2s;
 }
 
 .pictureHalfMoon {
@@ -321,6 +323,7 @@ body {
   bottom: 19%;
   left: 50%;
   z-index: 1;
+  animation: moveUp 0.5s;
 }
 
 .pictureRacoon {
@@ -331,6 +334,7 @@ body {
   bottom: 18%;
   left: 19%;
   z-index: 1;
+  animation: moveUp 0.5s;
 }
 
 .advice {
@@ -371,6 +375,30 @@ body {
 
 .quote {
   padding: 5% 10%;
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes moveDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
 }
 
 @media screen and (max-width: 600px) {
