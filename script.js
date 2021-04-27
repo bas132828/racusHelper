@@ -154,7 +154,7 @@ const usdValue = async function () {
     changeRate(usdPrice);
     infoText.textContent = "USD rate:";
   }
-} else if (curDay===today.getDate) {
+} else {
 
   usdPrice = data.Valute.USD.Value;
   eurPrice = data.Valute.EUR.Value;
