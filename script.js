@@ -21,9 +21,8 @@ const euroPic = document.querySelector(".euro");
 const moon = document.querySelector('.pictureMoon');
 const sun = document.querySelector('.pictureSun');
 const halfMoon = document.querySelector('.pictureHalfMoon');
-const racoon = document.querySelector('.pictureRacoon')
-const html = document.querySelector('html')
-const adviceHook = document.querySelector('.adviceHook')
+const racoon = document.querySelector('.pictureRacoon');
+const adviceHook = document.querySelector('.adviceHook');
 
 const days = [
   "Sunday",
@@ -58,20 +57,6 @@ let curDay;
 
 let currentTheme = localStorage.getItem("theme");
 
-const initialTheme = function () {
-  if (currentTheme === "dark") {
-    // document
-    //   .getElementById("normal-theme")
-    //   .setAttribute("href", "styles-light.css");
-    // toggleNight.checked = true;
-  }
-  if (currentTheme === "light") {
-    // document.getElementById("normal-theme").setAttribute("href", "styles.css");
-  }
-};
-
-initialTheme();
-
 
 const nightPics = function() {
   racoon.style.display = 'block';
@@ -93,10 +78,24 @@ const dayPics = function() {
   adviceHook.classList.add('advice');
 }
 
+
+const initialTheme = function () {
+  if (currentTheme === "light") {
+    nightPics()
+    toggleNight.checked = true;
+  }
+  if (currentTheme === "dark") {
+    dayPics()
+
+  }
+};
+
+initialTheme();
+
 toggleNight.addEventListener("change", function (e) {
   if (toggleNight.checked) {
     nightPics();
-
+   
     localStorage.setItem("theme", "light");
   } else {
     dayPics();

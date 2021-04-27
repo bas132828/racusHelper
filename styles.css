@@ -306,11 +306,11 @@ body {
 .pictureSun {
   position: absolute;
   display: none;
-  height: 36%;
+  height: 32%;
   min-height: 6rem;
   width: auto;
   top: -4%;
-  left: 25%;
+  left: 16%;
 }
 
 .pictureHalfMoon {
