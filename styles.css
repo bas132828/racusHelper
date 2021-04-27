@@ -412,7 +412,10 @@ body {
 @media (max-width: 600px) {
   html,
   body {
-    font-size: 42%;
+    font-size: 40%;
+  }
+  .pictureHalfMoon {
+    left: 38%;
   }
 }
 

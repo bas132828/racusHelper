@@ -130,7 +130,7 @@ toggleCur.addEventListener("change", function () {
 const usdValue = async function () {
   const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
   const data = await resp.json();
-
+  console.log(data);
   usdPrice = data.Valute.USD.Value;
   eurPrice = data.Valute.EUR.Value;
   //DATES
@@ -281,6 +281,7 @@ const autoClipboard = function (event) {
 
 copyTextareaBtn.addEventListener("click", autoClipboard);
 
-//toggling currency
 
-// document.querySelector(".picture2").style.display = "block";
+
+//experimenting here
+
