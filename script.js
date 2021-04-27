@@ -1,50 +1,79 @@
 "use strict";
-const rate = document.querySelector(".rate");
+const date = document.querySelector(".info--date");
+const rate = document.querySelector(".info--rate");
+const infoText = document.querySelector(".info--text");
 const result = document.querySelector(".result");
 const btn = document.querySelector(".btn");
 const text = document.querySelector(".quote");
-const nuts = document.querySelector(".imageW");
-const nightModeSheet = document.getElementById("night-theme");
-const lightModeSheet = document.getElementById("normal-theme");
-const toggleNight = document.getElementById("toggle-button");
-const toggleCur = document.getElementById("toggle-currency");
+// const nightModeSheet = document.getElementById("night-theme");
+// const lightModeSheet = document.getElementById("normal-theme");
+const toggleNight = document.getElementById("toggle-button-mode");
+const toggleCur = document.getElementById("toggle-button-currency");
+const inputField = document.querySelector(".price");
+// imgs for toggles
+const moonPic = document.querySelector(".night");
+const sunPic = document.querySelector(".day");
+const usdPic = document.querySelector(".usd");
+const euroPic = document.querySelector(".euro");
+
+const days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 let newValue;
 let usdPrice;
 let eurPrice;
-let curDate;
+let dayOfWeek;
+let curMonth;
+let curDay;
+
+let currentTheme = localStorage.getItem("theme");
+
+const initialTheme = function () {
+  if (currentTheme === "dark") {
+    document
+      .getElementById("normal-theme")
+      .setAttribute("href", "styles-light.css");
+    toggleNight.checked = true;
+  }
+  if (currentTheme === "light") {
+    document.getElementById("normal-theme").setAttribute("href", "styles.css");
+  }
+};
+
+initialTheme();
 
 toggleNight.addEventListener("change", function (e) {
   if (toggleNight.checked) {
     document
       .getElementById("normal-theme")
-      .setAttribute("href", "styles-night.css");
-      localStorage.setItem("theme", "dark");
-
+      .setAttribute("href", "styles-light.css");
+    localStorage.setItem("theme", "dark");
   } else {
     document.getElementById("normal-theme").setAttribute("href", "styles.css");
     localStorage.setItem("theme", "light");
   }
 });
-
-let currentTheme = localStorage.getItem('theme');
-
-console.log(currentTheme)
-
-const initialTheme = function() {
- if(currentTheme==='dark')
-  {
-    document
-      .getElementById("normal-theme")
-      .setAttribute("href", "styles-night.css");
-      toggleNight.checked = true;
-  }
-  if(currentTheme==='light') {
-    document.getElementById("normal-theme").setAttribute("href", "styles.css");
-  }
-}
-initialTheme()
-
 
 const renewPage = function () {
   document.querySelector(".price").value = "";
@@ -55,19 +84,20 @@ renewPage();
 
 const changeRate = function (str) {
   rate.textContent = str;
-  rate.insertAdjacentText("beforeend", ` ${curDate}`);
 };
 
 toggleCur.addEventListener("change", function () {
   if (toggleCur.checked) {
     changeRate(eurPrice);
+    inputField.placeholder = "Type the debt in EUR...";
+
+    infoText.textContent = "EUR rate:";
   } else {
     changeRate(usdPrice);
+    inputField.placeholder = "Type the debt in USD...";
+    infoText.textContent = "USD rate:";
   }
 });
-
-
-
 
 const usdValue = async function () {
   const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
@@ -75,9 +105,19 @@ const usdValue = async function () {
 
   usdPrice = data.Valute.USD.Value;
   eurPrice = data.Valute.EUR.Value;
-  curDate = new Date(data.Date).toLocaleDateString("ru");
+  //DATES
+  dayOfWeek = days[new Date(data.Date).getDay()];
+  curMonth = months[new Date(data.Date).getMonth()];
+  curDay = new Date(data.Date).getDate();
+  date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
 
-  toggleCur.checked ? changeRate(eurPrice) : changeRate(usdPrice);
+  if (toggleCur.checked) {
+    changeRate(eurPrice);
+    infoText.textContent = "EURO rate:";
+  } else {
+    changeRate(usdPrice);
+    infoText.textContent = "USD rate: ";
+  }
 };
 
 usdValue();
@@ -102,6 +142,7 @@ const calcPaymentShow = function (value) {
     result.textContent = `${Math.trunc(toPay)} руб. ${
       Math.trunc(toPay * 100) % 100
     } коп.`;
+    alert("You are using euro rate");
   } else {
     const toPay = Number(usdPrice) * Number(value);
     result.textContent = `${Math.trunc(toPay)} руб. ${
@@ -113,33 +154,58 @@ const calcPaymentShow = function (value) {
 const calc = function (event) {
   event.preventDefault();
   const value = document.querySelector(".price").value;
+
+  if (value.includes(",") && value.includes(".")) {
+    newValue = value.replace(",", "");
+    if (!Number(newValue)) return renewPage();
+    calcPaymentShow(newValue);
+    autoClipboard();
+  }
+
   if (value.includes(",")) {
     newValue = value.replace(",", ".");
     if (!Number(newValue)) return renewPage();
     calcPaymentShow(newValue);
+    autoClipboard();
   }
+  if (value.includes("?")) {
+    newValue = value.replace("?", ".");
+    if (!Number(newValue)) return renewPage();
+    calcPaymentShow(newValue);
+    autoClipboard();
+  }
+
+  if (value.includes("/")) {
+    newValue = value.replace("/", ".");
+    if (!Number(newValue)) return renewPage();
+    calcPaymentShow(newValue);
+    autoClipboard();
+  }
+
   if (!Number(value)) return renewPage();
+
   calcPaymentShow(value);
   apiAdvice();
   renewPage();
-  // console.log(toPay);
-  // if (toPay > 100000) {
-  //   nuts.style.display = "flex";
-  //   setTimeout(() => (nuts.style.display = "none"), 50);
-  // }
+  autoClipboard();
 };
 
 btn.addEventListener("click", calc);
 
 //using enter
-document.addEventListener("keydown", function (e) {
-  // if (e.key === 'Escape'){
-  //   console.log(val.value)
-  //  }
 
+document.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     e.preventDefault();
     const value = document.querySelector(".price").value;
+
+    if (value.includes(",") && value.includes(".")) {
+      newValue = value.replace(",", "");
+      if (!Number(newValue)) return renewPage();
+      calcPaymentShow(newValue);
+      autoClipboard();
+    }
+
     if (value.includes(",")) {
       newValue = value.replace(",", ".");
       if (!Number(newValue)) return renewPage();
@@ -159,9 +225,6 @@ document.addEventListener("keydown", function (e) {
       calcPaymentShow(newValue);
       autoClipboard();
     }
-    if (!Number(value)) return renewPage();
-    calcPaymentShow(value);
-    apiAdvice();
 
     if (!Number(value)) return renewPage();
 
@@ -192,3 +255,4 @@ copyTextareaBtn.addEventListener("click", autoClipboard);
 
 //toggling currency
 
+// document.querySelector(".picture2").style.display = "block";

@@ -5,99 +5,102 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Racusulator</title>
-    <link rel="icon" href="./image/favicon.ico" />
+    <link rel="icon" href="img/favicon.ico" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cabin&family=Gochi+Hand&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" id="normal-theme" />
-    <!-- <link rel="stylesheet" href="styles-night.css" id="night-theme" /> -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
-      rel="stylesheet"
-    />
+    <!-- <link rel="stylesheet" href="styles-light.css" id="light-theme" /> -->
+    <script defer src="script.js"></script>
   </head>
   <body>
-    <label for="toggle-button" class="night">
-      <input type="checkbox" id="toggle-button" class="toggle-button" />
-      <span class="moon-sun">
-        <img class="img1toggle" src="image/half-moon.svg" alt="" />
-        <img class="img1toggle sun" src="image/sun.svg" alt="" />
-      </span>
-    </label>
-    <br />
-    <label for="toggle-currency" class="money">
-      <input
-        type="checkbox"
-        id="toggle-currency"
-        class="toggle-button-currency"
-      />
-      <span class="usd-euro">
-        <img class="img2toggle" src="image/euro.svg" alt="" />
-        <img class="img2toggle euro" src="image/dollar.svg" alt="" />
-      </span>
-    </label>
-
-    <div class="superwrapper">
-      <div class="main">
-        <div class="flex-parent header">
-          <div class="header header-left">
-            <span class="differentcolor">Calculate</span><br />what's your debt
-            in roubles today
+    <!--Main container-->
+    <div class="container-wrapper">
+      <div class="main-container">
+        <!--Flex container (info, moon, toggles)-->
+        <div class="header flex-container">
+          <div class="information item-flex">
+            <div class="info">
+              <span class="info--text">Exchange rate:</span>
+              <span class="info--rate"></span>
+              <br />
+              <span class="info--date"></span>
+            </div>
           </div>
-          <div class="header header-right">
-            <span class="differentcolor differentcolor2">exchange rate:</span>
-            <p class="rate">0</p>
+          <!-- <div class="moon item-flex"></div> -->
+          <div class="toggles item-flex">
+            <div class="toggle--mode">
+              <input type="checkbox" name="" id="toggle-button-mode" />
+              <span class="moon-sun">
+                <img
+                  class="toggle1 night hidden"
+                  src="img/moon--icon.png"
+                  alt=""
+                />
+                <img class="toggle1 day" src="img/sun-icon.png" alt="" />
+              </span>
+            </div>
+            <div class="toggle--cur">
+              <input type="checkbox" name="" id="toggle-button-currency" />
+              <span class="usd-euro">
+                <img
+                  class="toggle2 usd hidden"
+                  src="img/dollar--icon.png"
+                  alt=""
+                />
+                <img class="toggle2 euro" src="img/euro--icon.png" alt="" />
+              </span>
+            </div>
           </div>
         </div>
-        <hr />
-        <div class="wrapper">
-          <div class="calcform">
-            <form class="Inputform" action="">
-              <input
-                class="typewindow price"
-                type="text"
-                placeholder="Type the debt in USD..."
-                onfocus="this.value=''"
-                autofocus
-              />
-            </form>
-            <div class="result-div">
-              <textarea
-                name="text"
-                id="textarea"
-                class="result js-copytextarea"
-                readonly
-              ></textarea>
-            </div>
-            <div><button class="btn js-textareacopybtn">Calculate</button></div>
-            <!-- <div> -->
-            <!-- <button class="btn btn-2 js-textareacopybtn">Copy text</button> -->
-            <!-- </div> -->
-            <div class="advice quote"></div>
+        <div class="picture pic"></div>
+        <!--C-->
+        <div class="calcform">
+          <form class="Inputform" action="">
+            <input
+              class="typewindow price"
+              type="text"
+              placeholder="Type the debt in USD..."
+              onfocus="this.value=''"
+              autofocus
+            />
+          </form>
+          <div class="result-div">
+            <textarea
+              name="text"
+              id="textarea"
+              class="result js-copytextarea"
+              readonly
+            ></textarea>
+          </div>
+          <div>
+            <button class="btn js-textareacopybtn">Calculate</button>
+          </div>
+          <div class="picture2 pic2"></div>
+          <!-- <img class="halfmoon" src="img/raccoon.png" alt="" /> -->
+          <div class="advice">
+            <p class="quote"></p>
           </div>
         </div>
       </div>
-      <div class="circle circle1"></div>
-      <div class="circle circle2"></div>
-      <div class="circle circle3"></div>
-      <div class="circle circle4"></div>
-      <div class="circle circle5"></div>
+      <div class="backroundLight"></div>
     </div>
-    <!-- <div class="imageW">
-      <img src="./image/2r.png" cla/div> -->
-    <script src="script.js"></script>
+
+    <div>
+      <!-- <label class="switch">
+        <input type="checkbox" />
+        <span class="slider round"></span>
+      </label>
+      <label class="switch">
+        <input type="checkbox" />
+        <span class="slider round"></span>
+      </label> -->
+    </div>
   </body>
+
   <footer>
     <a href="https://www.cbr-xml-daily.ru/" class="foot">Курсы валют, API</a>
-    <!-- <div>
-      Icons made by
-      <a href="https://www.freepik.com" title="Freepik">Freepik</a> from
-      <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-    </div> -->
   </footer>
 </html>
