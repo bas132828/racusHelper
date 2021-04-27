@@ -16,6 +16,15 @@ const sunPic = document.querySelector(".day");
 const usdPic = document.querySelector(".usd");
 const euroPic = document.querySelector(".euro");
 
+//pictures
+
+const moon = document.querySelector('.pictureMoon');
+const sun = document.querySelector('.pictureSun');
+const halfMoon = document.querySelector('.pictureHalfMoon');
+const racoon = document.querySelector('.pictureRacoon')
+const html = document.querySelector('html')
+const adviceHook = document.querySelector('.adviceHook')
+
 const days = [
   "Sunday",
   "Monday",
@@ -51,27 +60,47 @@ let currentTheme = localStorage.getItem("theme");
 
 const initialTheme = function () {
   if (currentTheme === "dark") {
-    document
-      .getElementById("normal-theme")
-      .setAttribute("href", "styles-light.css");
-    toggleNight.checked = true;
+    // document
+    //   .getElementById("normal-theme")
+    //   .setAttribute("href", "styles-light.css");
+    // toggleNight.checked = true;
   }
   if (currentTheme === "light") {
-    document.getElementById("normal-theme").setAttribute("href", "styles.css");
+    // document.getElementById("normal-theme").setAttribute("href", "styles.css");
   }
 };
 
 initialTheme();
 
+
+const nightPics = function() {
+  racoon.style.display = 'block';
+  sun.style.display = 'block';
+  moon.style.display = 'none';
+  halfMoon.style.display = 'none';
+  document.body.style.background = '#b3a7ee' 
+  adviceHook.classList.remove('advice');
+  adviceHook.classList.add('adviceDay');
+}
+
+const dayPics = function() {
+  racoon.style.display = 'none';
+  sun.style.display = 'none';
+  moon.style.display = 'block';
+  halfMoon.style.display = 'block';
+  document.body.style.background = '#5841d7'
+  adviceHook.classList.remove('adviceDay');
+  adviceHook.classList.add('advice');
+}
+
 toggleNight.addEventListener("change", function (e) {
   if (toggleNight.checked) {
-    document
-      .getElementById("normal-theme")
-      .setAttribute("href", "styles-light.css");
-    localStorage.setItem("theme", "dark");
-  } else {
-    document.getElementById("normal-theme").setAttribute("href", "styles.css");
+    nightPics();
+
     localStorage.setItem("theme", "light");
+  } else {
+    dayPics();
+    localStorage.setItem("theme", "dark");
   }
 });
 
@@ -116,7 +145,7 @@ const usdValue = async function () {
     infoText.textContent = "EURO rate:";
   } else {
     changeRate(usdPrice);
-    infoText.textContent = "USD rate: ";
+    infoText.textContent = "USD rate:";
   }
 };
 

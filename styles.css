@@ -30,7 +30,8 @@ body {
   position: relative;
   width: 68rem;
   height: 95vh;
-  min-height: 60rem;
+  max-height: 140rem;
+  min-height: 80rem;
   min-width: 50rem;
   border-radius: 7rem;
   margin: 1rem 20rem;
@@ -69,29 +70,6 @@ body {
   font-size: 1.6rem;
   text-shadow: 1px 1px 1px rgb(152, 96, 154);
 }
-
-.pic {
-  background-image: url(img/moon.png);
-}
-
-.picture {
-  position: absolute;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 32%;
-  width: 32%;
-  top: -2%;
-  left: 42%;
-  transition: 0.3s;
-}
-
-/* .moon {
-  background: url(img/moon.png) no-repeat;
-  background-size: 100%;
-  width: 26%;
-  min-width: 15rem;
-} */
 
 /*Toggles*/
 .toggles {
@@ -325,28 +303,44 @@ body {
 }
 
 /*Bottom*/
-
-.pic2 {
-  background-image: url(img/halfmoon.png);
+/* moon */
+.pictureMoon {
+  position: absolute;
+  display: block;
+  height: 22%;
+  min-height: 15rem;
+  width: auto;
+  top: -1%;
+  left: 52%;
+}
+.pictureSun {
+  position: absolute;
+  display: none;
+  height: 36%;
+  min-height: 6rem;
+  width: auto;
+  top: -4%;
+  left: 25%;
 }
 
-.picture2 {
+.pictureHalfMoon {
   display: block;
   position: absolute;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 35%;
-  width: 35%;
-  bottom: 12rem;
-  left: 40%;
+  height: 22%;
+  width: auto;
+  bottom: 19%;
+  left: 50%;
   z-index: 1;
-  max-width: 35%;
-  min-width: 35%;
-  max-height: 35%;
-  min-height: 35%;
-  transition: 0.8s;
-  /* transform: translateX(0.1rem); */
+}
+
+.pictureRacoon {
+  display: none;
+  position: absolute;
+  height: 20%;
+  width: auto;
+  bottom: 18%;
+  left: 19%;
+  z-index: 1;
 }
 
 /* .halfmoon {
@@ -370,10 +364,28 @@ body {
   color: #502fea;
   bottom: 0;
   width: 100%;
-  height: 23%;
+  height: 21%;
   border-radius: 7rem;
   z-index: 2;
   text-shadow: rgba(0, 0, 0, 0.25) 0.2rem 0.2rem 0.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adviceDay {
+  position: absolute;
+  background-color: #502fea;
+  font-family: "Gochi Hand", cursive;
+  font-size: 2.8rem;
+  padding: 1.8rem;
+  color: #fdfdfc;
+  bottom: 0;
+  width: 100%;
+  height: 21%;
+  border-radius: 7rem;
+  z-index: 2;
+  text-shadow: rgba(255, 255, 255, 0.25) 0.2rem 0.2rem 0.1rem;
   display: flex;
   justify-content: center;
   align-items: center;
