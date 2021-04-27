@@ -131,6 +131,13 @@ const usdValue = async function () {
   const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
   const data = await resp.json();
   console.log(data);
+  const today = new Date();
+  console.log(today)
+
+  if (curDay!==today.getDate) {
+  const resp2 = await fetch(`https://www.cbr-xml-daily.ru//archive//${today.getFullYear()}//0${(today.getMonth()+1)}//${today.getDate()}//daily_json.js`)
+  const data = await resp2.json();
+  console.log(data);
   usdPrice = data.Valute.USD.Value;
   eurPrice = data.Valute.EUR.Value;
   //DATES
@@ -138,6 +145,7 @@ const usdValue = async function () {
   curMonth = months[new Date(data.Date).getMonth()];
   curDay = new Date(data.Date).getDate();
   date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
+  
 
   if (toggleCur.checked) {
     changeRate(eurPrice);
@@ -146,6 +154,24 @@ const usdValue = async function () {
     changeRate(usdPrice);
     infoText.textContent = "USD rate:";
   }
+} else if (curDay===today.getDate) {
+
+  usdPrice = data.Valute.USD.Value;
+  eurPrice = data.Valute.EUR.Value;
+  //DATES
+  dayOfWeek = days[new Date(data.Date).getDay()];
+  curMonth = months[new Date(data.Date).getMonth()];
+  curDay = new Date(data.Date).getDate();
+  date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
+  console.log(curDay)
+
+  if (toggleCur.checked) {
+    changeRate(eurPrice);
+    infoText.textContent = "EURO rate:";
+  } else {
+    changeRate(usdPrice);
+    infoText.textContent = "USD rate:";
+  }}
 };
 
 usdValue();

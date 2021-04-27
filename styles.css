@@ -319,7 +319,7 @@ body {
   min-height: 6rem;
   width: auto;
   top: -4%;
-  left: 16%;
+  left: 28%;
   animation: moveDown 0.2s;
 }
 
@@ -340,7 +340,7 @@ body {
   height: 20%;
   width: auto;
   bottom: 18%;
-  left: 19%;
+  left: 13%;
   z-index: 1;
   animation: moveUp 0.5s;
 }
@@ -416,6 +416,9 @@ body {
   }
   .pictureHalfMoon {
     left: 38%;
+  }
+  .pictureSun {
+    height: 22%;
   }
 }
 
