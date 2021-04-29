@@ -406,6 +406,7 @@ body {
   position: absolute;
   top: 5rem;
   right: 5rem;
+  z-index: 7;
 }
 
 @keyframes fade {

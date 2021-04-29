@@ -207,7 +207,10 @@ fetch(`https://www.cbr-xml-daily.ru//archive//${calYear}//${calMonth}//${calDay}
       changeRate(usdPrice);
       infoText.textContent = "USD rate:";
     }
-  })
+  }).catch(()=> {
+  date.textContent = `Weekend or smth`
+  changeRate(`🤷‍♂`)
+})
 
 })
 
@@ -372,3 +375,9 @@ const autoClipboard = function (event) {
 copyTextareaBtn.addEventListener("click", autoClipboard);
 
 //experimenting here
+// fetch(`https://www.cbr-xml-daily.ru//archive//2021//$04//26//daily_json.js`).then(resp=>resp.json()).then(data=>console.log(data))
+
+const req = new XMLHttpRequest();
+// const url = 'https://www.cbr-xml-daily.ru//archive//2021//$04//28//daily_json.js'
+
+
