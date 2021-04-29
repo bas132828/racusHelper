@@ -17,6 +17,7 @@ body {
   font-family: "Cabin", sans-serif;
   box-sizing: border-box;
   background: #5841d7;
+  height: 100vh;
 }
 
 .container-wrapper {
@@ -361,6 +362,49 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.bubble-speech {
+  display: none;
+  position: absolute;
+  font-family: inherit;
+  font-size: 2rem;
+  width: 40%;
+  height: auto;
+  min-width: 25rem;
+  background-color: #e4dff5;
+  border-radius: 5rem;
+  padding: 3rem;
+  color: #502fea;
+  left: 28%;
+  top: 49%;
+  z-index: 2;
+  animation: fade 3s;
+}
+
+.bubble-speech::before {
+  content: "";
+  position: absolute;
+  width: 0rem;
+  height: 0rem;
+  border-left: 2.4rem solid #e4dff5;
+  border-right: 1.2rem solid transparent;
+  border-top: 1.2rem solid #e4dff5;
+  border-bottom: 2rem solid transparent;
+  bottom: -3rem;
+  left: 5rem;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .adviceDay {
