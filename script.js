@@ -132,7 +132,7 @@ const usdValue = async function () {
   curDay = new Date(data.Date).getDate();
   const realDay = today.getDate();
   const weekDay = days[today.getDay()];
-  
+
   if (curDay !== realDay && weekDay!== 'Saturday' && weekDay!== 'Sunday')  {
     const resp2 = await fetch(
       `https://www.cbr-xml-daily.ru//archive//${today.getFullYear()}//0${
@@ -177,6 +177,41 @@ const usdValue = async function () {
 };
 
 usdValue();
+
+
+//calendar thing
+
+const calendar = document.querySelector('.calendar')
+
+
+calendar.addEventListener('change', function(e) {
+ console.log(e)
+ console.log(calendar.value)
+const calYear = calendar.value.split('-')[0]
+const calMonth = calendar.value.split('-')[1];
+const calDay = calendar.value.split('-')[2];
+
+fetch(`https://www.cbr-xml-daily.ru//archive//${calYear}//${calMonth}//${calDay}//daily_json.js`).then(resp=>resp.json()).then(data=>{
+    usdPrice = data.Valute.USD.Value;
+    eurPrice = data.Valute.EUR.Value;
+    //DATES
+    dayOfWeek = days[new Date(data.Date).getDay()];
+    curMonth = months[new Date(data.Date).getMonth()];
+    curDay = new Date(data.Date).getDate();
+    date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
+
+    if (toggleCur.checked) {
+      changeRate(eurPrice);
+      infoText.textContent = "EURO rate:";
+    } else {
+      changeRate(usdPrice);
+      infoText.textContent = "USD rate:";
+    }
+  })
+
+})
+
+
 
 const render = function (str) {
   text.textContent = str;

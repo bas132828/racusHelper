@@ -402,6 +402,11 @@ body {
   right: 3rem;
   cursor: pointer;
 }
+.calendar {
+  position: absolute;
+  top: 5rem;
+  right: 5rem;
+}
 
 @keyframes fade {
   0% {
