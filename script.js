@@ -126,13 +126,14 @@ toggleCur.addEventListener("change", function () {
 });
 
 const usdValue = async function () {
-  const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
+  try{const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
   const data = await resp.json();
   const today = new Date();
   curDay = new Date(data.Date).getDate();
   const realDay = today.getDate();
-
-  if (curDay !== realDay) {
+  const weekDay = days[today.getDay()];
+  
+  if (curDay !== realDay && weekDay!== 'Saturday' && weekDay!== 'Sunday')  {
     const resp2 = await fetch(
       `https://www.cbr-xml-daily.ru//archive//${today.getFullYear()}//0${
         today.getMonth() + 1
@@ -170,6 +171,8 @@ const usdValue = async function () {
       changeRate(usdPrice);
       infoText.textContent = "USD rate:";
     }
+  }}catch(e){
+    console.log(e.message)
   }
 };
 
@@ -205,7 +208,7 @@ const calcPaymentShow = function (value) {
     //     racoon.style.display = "none";
     //   }, 3000);
     // } else {
-    //   bublespeech.style.display = "block";
+    //   bublespeech.style.display = "block";   
     //   setTimeout(function () {
     //     bublespeech.style.display = "none";
     //   }, 3000);
