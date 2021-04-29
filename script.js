@@ -18,11 +18,11 @@ const euroPic = document.querySelector(".euro");
 
 //pictures
 
-const moon = document.querySelector('.pictureMoon');
-const sun = document.querySelector('.pictureSun');
-const halfMoon = document.querySelector('.pictureHalfMoon');
-const racoon = document.querySelector('.pictureRacoon');
-const adviceHook = document.querySelector('.adviceHook');
+const moon = document.querySelector(".pictureMoon");
+const sun = document.querySelector(".pictureSun");
+const halfMoon = document.querySelector(".pictureHalfMoon");
+const racoon = document.querySelector(".pictureRacoon");
+const adviceHook = document.querySelector(".adviceHook");
 
 const days = [
   "Sunday",
@@ -57,36 +57,33 @@ let curDay;
 
 let currentTheme = localStorage.getItem("theme");
 
+const nightPics = function () {
+  racoon.style.display = "block";
+  sun.style.display = "block";
+  moon.style.display = "none";
+  halfMoon.style.display = "none";
+  document.body.style.background = "#b3a7ee";
+  adviceHook.classList.remove("advice");
+  adviceHook.classList.add("adviceDay");
+};
 
-const nightPics = function() {
-  racoon.style.display = 'block';
-  sun.style.display = 'block';
-  moon.style.display = 'none';
-  halfMoon.style.display = 'none';
-  document.body.style.background = '#b3a7ee' 
-  adviceHook.classList.remove('advice');
-  adviceHook.classList.add('adviceDay');
-}
-
-const dayPics = function() {
-  racoon.style.display = 'none';
-  sun.style.display = 'none';
-  moon.style.display = 'block';
-  halfMoon.style.display = 'block';
-  document.body.style.background = '#5841d7'
-  adviceHook.classList.remove('adviceDay');
-  adviceHook.classList.add('advice');
-}
-
+const dayPics = function () {
+  racoon.style.display = "none";
+  sun.style.display = "none";
+  moon.style.display = "block";
+  halfMoon.style.display = "block";
+  document.body.style.background = "#5841d7";
+  adviceHook.classList.remove("adviceDay");
+  adviceHook.classList.add("advice");
+};
 
 const initialTheme = function () {
   if (currentTheme === "light") {
-    nightPics()
+    nightPics();
     toggleNight.checked = true;
   }
   if (currentTheme === "dark") {
-    dayPics()
-
+    dayPics();
   }
 };
 
@@ -95,7 +92,7 @@ initialTheme();
 toggleNight.addEventListener("change", function (e) {
   if (toggleNight.checked) {
     nightPics();
-   
+
     localStorage.setItem("theme", "light");
   } else {
     dayPics();
@@ -130,48 +127,49 @@ toggleCur.addEventListener("change", function () {
 const usdValue = async function () {
   const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
   const data = await resp.json();
-  console.log(data);
   const today = new Date();
-  console.log(today)
-
-  if (curDay!==today.getDate) {
-  const resp2 = await fetch(`https://www.cbr-xml-daily.ru//archive//${today.getFullYear()}//0${(today.getMonth()+1)}//${today.getDate()}//daily_json.js`)
-  const data = await resp2.json();
-  console.log(data);
-  usdPrice = data.Valute.USD.Value;
-  eurPrice = data.Valute.EUR.Value;
-  //DATES
-  dayOfWeek = days[new Date(data.Date).getDay()];
-  curMonth = months[new Date(data.Date).getMonth()];
   curDay = new Date(data.Date).getDate();
-  date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
-  
+  const realDay = today.getDate();
 
-  if (toggleCur.checked) {
-    changeRate(eurPrice);
-    infoText.textContent = "EURO rate:";
+  if (curDay !== realDay) {
+    const resp2 = await fetch(
+      `https://www.cbr-xml-daily.ru//archive//${today.getFullYear()}//0${
+        today.getMonth() + 1
+      }//${today.getDate()}//daily_json.js`
+    );
+    const data = await resp2.json();
+    console.log(data);
+    usdPrice = data.Valute.USD.Value;
+    eurPrice = data.Valute.EUR.Value;
+    //DATES
+    dayOfWeek = days[new Date(data.Date).getDay()];
+    curMonth = months[new Date(data.Date).getMonth()];
+    curDay = new Date(data.Date).getDate();
+    date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
+
+    if (toggleCur.checked) {
+      changeRate(eurPrice);
+      infoText.textContent = "EURO rate:";
+    } else {
+      changeRate(usdPrice);
+      infoText.textContent = "USD rate:";
+    }
   } else {
-    changeRate(usdPrice);
-    infoText.textContent = "USD rate:";
+    usdPrice = data.Valute.USD.Value;
+    eurPrice = data.Valute.EUR.Value;
+    //DATES
+    dayOfWeek = days[new Date(data.Date).getDay()];
+    curMonth = months[new Date(data.Date).getMonth()];
+    date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
+
+    if (toggleCur.checked) {
+      changeRate(eurPrice);
+      infoText.textContent = "EURO rate:";
+    } else {
+      changeRate(usdPrice);
+      infoText.textContent = "USD rate:";
+    }
   }
-} else {
-
-  usdPrice = data.Valute.USD.Value;
-  eurPrice = data.Valute.EUR.Value;
-  //DATES
-  dayOfWeek = days[new Date(data.Date).getDay()];
-  curMonth = months[new Date(data.Date).getMonth()];
-  curDay = new Date(data.Date).getDate();
-  date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
-  console.log(curDay)
-
-  if (toggleCur.checked) {
-    changeRate(eurPrice);
-    infoText.textContent = "EURO rate:";
-  } else {
-    changeRate(usdPrice);
-    infoText.textContent = "USD rate:";
-  }}
 };
 
 usdValue();
@@ -307,7 +305,4 @@ const autoClipboard = function (event) {
 
 copyTextareaBtn.addEventListener("click", autoClipboard);
 
-
-
 //experimenting here
-
