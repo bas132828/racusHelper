@@ -374,12 +374,12 @@ body {
   min-width: 25rem;
   background-color: #e4dff5;
   border-radius: 5rem;
-  padding: 3rem;
+  padding: 3.3rem;
   color: #502fea;
   left: 28%;
   top: 49%;
   z-index: 2;
-  animation: fade 3s;
+  /* animation: fade 3s; */
 }
 
 .bubble-speech::before {
@@ -393,6 +393,14 @@ body {
   border-bottom: 2rem solid transparent;
   bottom: -3rem;
   left: 5rem;
+}
+.close {
+  font-size: 3.7rem;
+  position: absolute;
+  display: inline-block;
+  top: 0rem;
+  right: 3rem;
+  cursor: pointer;
 }
 
 @keyframes fade {

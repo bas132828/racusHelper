@@ -24,6 +24,7 @@ const halfMoon = document.querySelector(".pictureHalfMoon");
 const racoon = document.querySelector(".pictureRacoon");
 const adviceHook = document.querySelector(".adviceHook");
 const bublespeech = document.querySelector(".bubble-speech");
+const closeBubble = document.querySelector(".close");
 
 const days = [
   "Sunday",
@@ -196,18 +197,31 @@ const calcPaymentShow = function (value) {
     } коп.`;
     // alert("You are using euro rate");
     //////////////////////////////////
+    // if (!toggleNight.checked) {
+    //   racoon.style.display = "block";
+    //   bublespeech.style.display = "block";
+    //   setTimeout(function () {
+    //     bublespeech.style.display = "none";
+    //     racoon.style.display = "none";
+    //   }, 3000);
+    // } else {
+    //   bublespeech.style.display = "block";
+    //   setTimeout(function () {
+    //     bublespeech.style.display = "none";
+    //   }, 3000);
+    // }
     if (!toggleNight.checked) {
       racoon.style.display = "block";
       bublespeech.style.display = "block";
-      setTimeout(function () {
-        bublespeech.style.display = "none";
+      closeBubble.addEventListener("click", function () {
         racoon.style.display = "none";
-      }, 3000);
+        bublespeech.style.display = "none";
+      });
     } else {
       bublespeech.style.display = "block";
-      setTimeout(function () {
+      closeBubble.addEventListener("click", function () {
         bublespeech.style.display = "none";
-      }, 3000);
+      });
     }
   } else {
     const toPay = Number(usdPrice) * Number(value);
