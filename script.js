@@ -23,6 +23,7 @@ const sun = document.querySelector(".pictureSun");
 const halfMoon = document.querySelector(".pictureHalfMoon");
 const racoon = document.querySelector(".pictureRacoon");
 const adviceHook = document.querySelector(".adviceHook");
+const bublespeech = document.querySelector(".bubble-speech");
 
 const days = [
   "Sunday",
@@ -115,7 +116,6 @@ toggleCur.addEventListener("change", function () {
   if (toggleCur.checked) {
     changeRate(eurPrice);
     inputField.placeholder = "Type the debt in EUR...";
-
     infoText.textContent = "EUR rate:";
   } else {
     changeRate(usdPrice);
@@ -194,7 +194,21 @@ const calcPaymentShow = function (value) {
     result.textContent = `${Math.trunc(toPay)} руб. ${
       Math.trunc(toPay * 100) % 100
     } коп.`;
-    alert("You are using euro rate");
+    // alert("You are using euro rate");
+    //////////////////////////////////
+    if (!toggleNight.checked) {
+      racoon.style.display = "block";
+      bublespeech.style.display = "block";
+      setTimeout(function () {
+        bublespeech.style.display = "none";
+        racoon.style.display = "none";
+      }, 3000);
+    } else {
+      bublespeech.style.display = "block";
+      setTimeout(function () {
+        bublespeech.style.display = "none";
+      }, 3000);
+    }
   } else {
     const toPay = Number(usdPrice) * Number(value);
     result.textContent = `${Math.trunc(toPay)} руб. ${
