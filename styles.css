@@ -497,9 +497,9 @@ body {
     position: relative;
     width: 58rem;
     height: 95vh;
-    max-height: 100rem;
+    max-height: 70rem;
     min-height: 50rem;
-    min-width: 30rem;
+    min-width: 35rem;
     border-radius: 7rem;
     margin: 1rem 20rem;
     background: rgba(111, 87, 222, 0.5);
