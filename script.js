@@ -155,7 +155,7 @@ toggleCur.addEventListener("change", function () {
 
 localStorage.setItem('today', `${realDay}`);
 
-if (localStorage.getItem('today')===localStorage.getItem('objDate')) {
+if (realDay+''===localStorage.getItem('objDate')) {
   usdPrice = localStorage.getItem('USD');
   eurPrice = localStorage.getItem('EUR');
   dayOfWeek = localStorage.getItem('dayOfWeek');
@@ -163,6 +163,13 @@ if (localStorage.getItem('today')===localStorage.getItem('objDate')) {
   curDay = localStorage.getItem('objDate');
   date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
   calendar.value = localStorage.getItem('fullDate');
+  if (toggleCur.checked) {
+    changeRate(eurPrice);
+    infoText.textContent = "EURO rate:";
+  } else {
+    changeRate(usdPrice);
+    infoText.textContent = "USD rate:";
+  }
 } else {
 
 const usdValue = async function () {
