@@ -18,7 +18,6 @@ const euroPic = document.querySelector(".euro");
 const today = new Date();
 const calendar = document.querySelector(".calendar");
 
-
 //pictures
 
 const moon = document.querySelector(".pictureMoon");
@@ -63,8 +62,6 @@ let realDay = today.getDate();
 let dateForCalender;
 
 let currentTheme = localStorage.getItem("theme");
-
-
 
 const nightPics = function () {
   racoon.style.display = "block";
@@ -153,16 +150,16 @@ toggleCur.addEventListener("change", function () {
   }
 });
 
-localStorage.setItem('today', `${realDay}`);
+localStorage.setItem("today", `${realDay}`);
 
-if (realDay+''===localStorage.getItem('objDate')) {
-  usdPrice = localStorage.getItem('USD');
-  eurPrice = localStorage.getItem('EUR');
-  dayOfWeek = localStorage.getItem('dayOfWeek');
-  curMonth = localStorage.getItem('curMonth');
-  curDay = localStorage.getItem('objDate');
+if (realDay + "" === localStorage.getItem("objDate")) {
+  usdPrice = localStorage.getItem("USD");
+  eurPrice = localStorage.getItem("EUR");
+  dayOfWeek = localStorage.getItem("dayOfWeek");
+  curMonth = localStorage.getItem("curMonth");
+  curDay = localStorage.getItem("objDate");
   date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
-  calendar.value = localStorage.getItem('fullDate');
+  calendar.value = localStorage.getItem("fullDate");
   if (toggleCur.checked) {
     changeRate(eurPrice);
     infoText.textContent = "EURO rate:";
@@ -171,53 +168,93 @@ if (realDay+''===localStorage.getItem('objDate')) {
     infoText.textContent = "USD rate:";
   }
 } else {
-
-const usdValue = async function () {
-  try {
-    const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
-    const data = await resp.json();
-    curDay = new Date(data.Date).getDate();
-
-    if (curDay !== realDay) {
-      const resp2 = await fetch(
-        `https://www.cbr-xml-daily.ru//archive//${today.getFullYear()}//0${
-          today.getMonth() + 1
-        }//${today.getDate()}//daily_json.js`
-      );
-      const data = await resp2.json();
-
-      usdPrice = data.Valute.USD.Value;
-      eurPrice = data.Valute.EUR.Value;
-      //DATES
-      console.log("2nd part fired");
-  
-
-      dayOfWeek = days[new Date(data.Date).getDay()];
-      curMonth = months[new Date(data.Date).getMonth()];
+  const usdValue = async function () {
+    try {
+      const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
+      const data = await resp.json();
       curDay = new Date(data.Date).getDate();
-      date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
 
+      if (curDay !== realDay) {
+        const resp2 = await fetch(
+          `https://www.cbr-xml-daily.ru//archive//${today.getFullYear()}//0${
+            today.getMonth() + 1
+          }//${today.getDate()}//daily_json.js`
+        );
+        const data = await resp2.json();
 
-      dateForCalender = data.Date.substr(0, 10);
-      calendar.value = dateForCalender;
+        usdPrice = data.Valute.USD.Value;
+        eurPrice = data.Valute.EUR.Value;
+        //DATES
+        console.log("2nd part fired");
 
-      localStorage.setItem('objDate', `${curDay}`);
-      localStorage.setItem('USD', `${data.Valute.USD.Value}`);
-      localStorage.setItem('EUR', `${data.Valute.EUR.Value}`);
-      localStorage.setItem('dayOfWeek', `${days[new Date(data.Date).getDay()]}`);
-      localStorage.setItem('curMonth', `${months[new Date(data.Date).getMonth()]}`);
-      localStorage.setItem('fullDate', `${dateForCalender}`);
+        dayOfWeek = days[new Date(data.Date).getDay()];
+        curMonth = months[new Date(data.Date).getMonth()];
+        curDay = new Date(data.Date).getDate();
+        date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
 
-      if (toggleCur.checked) {
-        changeRate(eurPrice);
-        infoText.textContent = "EURO rate:";
+        dateForCalender = data.Date.substr(0, 10);
+        calendar.value = dateForCalender;
+
+        localStorage.setItem("objDate", `${curDay}`);
+        localStorage.setItem("USD", `${data.Valute.USD.Value}`);
+        localStorage.setItem("EUR", `${data.Valute.EUR.Value}`);
+        localStorage.setItem(
+          "dayOfWeek",
+          `${days[new Date(data.Date).getDay()]}`
+        );
+        localStorage.setItem(
+          "curMonth",
+          `${months[new Date(data.Date).getMonth()]}`
+        );
+        localStorage.setItem("fullDate", `${dateForCalender}`);
+
+        if (toggleCur.checked) {
+          changeRate(eurPrice);
+          infoText.textContent = "EURO rate:";
+        } else {
+          changeRate(usdPrice);
+          infoText.textContent = "USD rate:";
+        }
       } else {
-        changeRate(usdPrice);
-        infoText.textContent = "USD rate:";
-      }
-    } else {
-      console.log("1st part fired");
+        console.log("1st part fired");
 
+        usdPrice = data.Valute.USD.Value;
+        eurPrice = data.Valute.EUR.Value;
+        //DATES
+        dayOfWeek = days[new Date(data.Date).getDay()];
+        curMonth = months[new Date(data.Date).getMonth()];
+        date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
+        dateForCalender = data.Date.substr(0, 10);
+        calendar.value = dateForCalender;
+
+        localStorage.setItem("objDate", `${curDay}`);
+        localStorage.setItem("USD", `${data.Valute.USD.Value}`);
+        localStorage.setItem("EUR", `${data.Valute.EUR.Value}`);
+        localStorage.setItem(
+          "dayOfWeek",
+          `${days[new Date(data.Date).getDay()]}`
+        );
+        localStorage.setItem(
+          "curMonth",
+          `${months[new Date(data.Date).getMonth()]}`
+        );
+        localStorage.setItem("fullDate", `${dateForCalender}`);
+
+        if (toggleCur.checked) {
+          changeRate(eurPrice);
+          infoText.textContent = "EURO rate:";
+        } else {
+          changeRate(usdPrice);
+          infoText.textContent = "USD rate:";
+        }
+      }
+    } catch (e) {
+      const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
+      const data = await resp.json();
+      const today = new Date();
+      curDay = new Date(data.Date).getDate();
+
+      console.log("3rd part fired");
 
       usdPrice = data.Valute.USD.Value;
       eurPrice = data.Valute.EUR.Value;
@@ -228,14 +265,18 @@ const usdValue = async function () {
       dateForCalender = data.Date.substr(0, 10);
       calendar.value = dateForCalender;
 
-
-      localStorage.setItem('objDate', `${curDay}`);
-      localStorage.setItem('USD', `${data.Valute.USD.Value}`);
-      localStorage.setItem('EUR', `${data.Valute.EUR.Value}`);
-      localStorage.setItem('dayOfWeek', `${days[new Date(data.Date).getDay()]}`);
-      localStorage.setItem('curMonth', `${months[new Date(data.Date).getMonth()]}`);
-      localStorage.setItem('fullDate', `${dateForCalender}`);
-
+      localStorage.setItem("objDate", `${curDay}`);
+      localStorage.setItem("USD", `${data.Valute.USD.Value}`);
+      localStorage.setItem("EUR", `${data.Valute.EUR.Value}`);
+      localStorage.setItem(
+        "dayOfWeek",
+        `${days[new Date(data.Date).getDay()]}`
+      );
+      localStorage.setItem(
+        "curMonth",
+        `${months[new Date(data.Date).getMonth()]}`
+      );
+      localStorage.setItem("fullDate", `${dateForCalender}`);
 
       if (toggleCur.checked) {
         changeRate(eurPrice);
@@ -245,46 +286,11 @@ const usdValue = async function () {
         infoText.textContent = "USD rate:";
       }
     }
-  } catch (e) {
-    const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
-    const data = await resp.json();
-    const today = new Date();
-    curDay = new Date(data.Date).getDate();
+  };
 
-    console.log("3rd part fired");
-    
-    usdPrice = data.Valute.USD.Value;
-    eurPrice = data.Valute.EUR.Value;
-    //DATES
-    dayOfWeek = days[new Date(data.Date).getDay()];
-    curMonth = months[new Date(data.Date).getMonth()];
-    date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
-    dateForCalender = data.Date.substr(0, 10);
-    calendar.value = dateForCalender;
-
-
-    localStorage.setItem('objDate', `${curDay}`);
-    localStorage.setItem('USD', `${data.Valute.USD.Value}`);
-    localStorage.setItem('EUR', `${data.Valute.EUR.Value}`);
-    localStorage.setItem('dayOfWeek', `${days[new Date(data.Date).getDay()]}`);
-    localStorage.setItem('curMonth', `${months[new Date(data.Date).getMonth()]}`);
-    localStorage.setItem('fullDate', `${dateForCalender}`);
-
-
-    if (toggleCur.checked) {
-      changeRate(eurPrice);
-      infoText.textContent = "EURO rate:";
-    } else {
-      changeRate(usdPrice);
-      infoText.textContent = "USD rate:";
-    }
-  }
-};
-
-usdValue();
+  usdValue();
 }
 //calendar thing
-
 
 calendar.addEventListener("change", function (e) {
   const calYear = calendar.value.split("-")[0];
