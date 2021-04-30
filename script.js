@@ -15,6 +15,8 @@ const moonPic = document.querySelector(".night");
 const sunPic = document.querySelector(".day");
 const usdPic = document.querySelector(".usd");
 const euroPic = document.querySelector(".euro");
+const today = new Date();
+
 
 //pictures
 
@@ -56,10 +58,12 @@ let eurPrice;
 let dayOfWeek;
 let curMonth;
 let curDay;
-let realDay;
+let realDay = today.getDate();
 let dateForCalender;
 
 let currentTheme = localStorage.getItem("theme");
+
+
 
 const nightPics = function () {
   racoon.style.display = "block";
@@ -148,17 +152,14 @@ toggleCur.addEventListener("change", function () {
   }
 });
 
+localStorage.setItem('today', `${realDay}`);
+
+
 const usdValue = async function () {
   try {
     const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
     const data = await resp.json();
-    const today = new Date();
     curDay = new Date(data.Date).getDate();
-    // DATE for the calender
-
-    /////////////////////////
-    realDay = today.getDate();
-    const weekDay = days[today.getDay()];
 
     if (curDay !== realDay) {
       const resp2 = await fetch(
@@ -172,13 +173,20 @@ const usdValue = async function () {
       eurPrice = data.Valute.EUR.Value;
       //DATES
       console.log("2nd part fired");
+  
 
       dayOfWeek = days[new Date(data.Date).getDay()];
       curMonth = months[new Date(data.Date).getMonth()];
       curDay = new Date(data.Date).getDate();
       date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
+
+
       dateForCalender = data.Date.substr(0, 10);
       calendar.value = dateForCalender;
+
+      localStorage.setItem('objDate', `${curDay}`);
+      localStorage.setItem('USD', `${data.Valute.USD.Value}`);
+      localStorage.setItem('EUR', `${data.Valute.EUR.Value}`);
 
       if (toggleCur.checked) {
         changeRate(eurPrice);
@@ -190,6 +198,7 @@ const usdValue = async function () {
     } else {
       console.log("1st part fired");
 
+
       usdPrice = data.Valute.USD.Value;
       eurPrice = data.Valute.EUR.Value;
       //DATES
@@ -198,6 +207,11 @@ const usdValue = async function () {
       date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
       dateForCalender = data.Date.substr(0, 10);
       calendar.value = dateForCalender;
+
+
+      localStorage.setItem('objDate', `${curDay}`);
+      localStorage.setItem('USD', `${data.Valute.USD.Value}`);
+      localStorage.setItem('EUR', `${data.Valute.EUR.Value}`);
 
       if (toggleCur.checked) {
         changeRate(eurPrice);
@@ -214,7 +228,7 @@ const usdValue = async function () {
     curDay = new Date(data.Date).getDate();
 
     console.log("3rd part fired");
-
+    
     usdPrice = data.Valute.USD.Value;
     eurPrice = data.Valute.EUR.Value;
     //DATES
@@ -223,6 +237,11 @@ const usdValue = async function () {
     date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
     dateForCalender = data.Date.substr(0, 10);
     calendar.value = dateForCalender;
+
+
+    localStorage.setItem('objDate', `${curDay}`);
+    localStorage.setItem('USD', `${data.Valute.USD.Value}`);
+    localStorage.setItem('EUR', `${data.Valute.EUR.Value}`);
 
     if (toggleCur.checked) {
       changeRate(eurPrice);
