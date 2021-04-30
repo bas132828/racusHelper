@@ -289,7 +289,14 @@ apiAdvice();
 const calcPaymentShow = function (value) {
   if (toggleCur.checked) {
     const toPay = Number(eurPrice) * Number(value);
-    if (curDay !== realDay) alert("София, курс не сегодняшний!");
+    const random = Math.round(Math.random());
+
+    if (curDay !== realDay) {
+      random === 1
+        ? alert("София, , курс не сегодняшний!")
+        : alert("Татьяна , курс не сегодняшний!");
+    }
+
     result.textContent = `${Math.trunc(toPay)} руб. ${
       Math.trunc(toPay * 100) % 100
     } коп.`;
@@ -324,7 +331,13 @@ const calcPaymentShow = function (value) {
     //   });
     // }
   } else {
-    if (curDay !== realDay) alert("София, курс не сегодняшний!");
+    const random = Math.round(Math.random());
+
+    if (curDay !== realDay) {
+      random === 1
+        ? alert("София, курс не сегодняшний!")
+        : alert("Татьяна , курс не сегодняшний!");
+    }
     const toPay = Number(usdPrice) * Number(value);
     result.textContent = `${Math.trunc(toPay)} руб. ${
       Math.trunc(toPay * 100) % 100
