@@ -120,6 +120,27 @@ toggleCur.addEventListener("change", function () {
     changeRate(eurPrice);
     inputField.placeholder = "Type the debt in EUR...";
     infoText.textContent = "EUR rate:";
+    ///////////
+    if (!toggleNight.checked) {
+      racoon.style.display = "block";
+      bublespeech.style.display = "block";
+      // closeBubble.addEventListener("click", function () {
+      //   racoon.style.display = "none";
+      //   bublespeech.style.display = "none";
+      // });
+      setTimeout(function () {
+        bublespeech.style.display = "none";
+        racoon.style.display = "none";
+      }, 2500);
+    } else {
+      bublespeech.style.display = "block";
+      // closeBubble.addEventListener("click", function () {
+      //   bublespeech.style.display = "none";
+      // });
+      setTimeout(function () {
+        bublespeech.style.display = "none";
+      }, 2500);
+    }
   } else {
     changeRate(usdPrice);
     inputField.placeholder = "Type the debt in USD...";
@@ -277,26 +298,6 @@ apiAdvice();
 const calcPaymentShow = function (value) {
   if (toggleCur.checked) {
     const toPay = Number(eurPrice) * Number(value);
-    if (!toggleNight.checked) {
-      racoon.style.display = "block";
-      bublespeech.style.display = "block";
-      // closeBubble.addEventListener("click", function () {
-      //   racoon.style.display = "none";
-      //   bublespeech.style.display = "none";
-      // });
-      setTimeout(function () {
-        bublespeech.style.display = "none";
-        racoon.style.display = "none";
-      }, 3000);
-    } else {
-      bublespeech.style.display = "block";
-      // closeBubble.addEventListener("click", function () {
-      //   bublespeech.style.display = "none";
-      // });
-      setTimeout(function () {
-        bublespeech.style.display = "none";
-      }, 3000);
-    }
 
     result.textContent = `${Math.trunc(toPay)} руб. ${
       Math.trunc(toPay * 100) % 100
