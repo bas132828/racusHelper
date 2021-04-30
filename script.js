@@ -167,7 +167,7 @@ const usdValue = async function () {
         }//${today.getDate()}//daily_json.js`
       );
       const data = await resp2.json();
-      console.log(data);
+
       usdPrice = data.Valute.USD.Value;
       eurPrice = data.Valute.EUR.Value;
       //DATES
@@ -179,8 +179,6 @@ const usdValue = async function () {
       date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
       dateForCalender = data.Date.substr(0, 10);
       calendar.value = dateForCalender;
-      console.log(dateForCalender);
-      console.log(data);
 
       if (toggleCur.checked) {
         changeRate(eurPrice);
@@ -200,8 +198,6 @@ const usdValue = async function () {
       date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
       dateForCalender = data.Date.substr(0, 10);
       calendar.value = dateForCalender;
-      console.log(dateForCalender);
-      console.log(data);
 
       if (toggleCur.checked) {
         changeRate(eurPrice);
@@ -217,7 +213,6 @@ const usdValue = async function () {
     const today = new Date();
     curDay = new Date(data.Date).getDate();
 
-    console.log(e.message);
     console.log("3rd part fired");
 
     usdPrice = data.Valute.USD.Value;
@@ -228,8 +223,6 @@ const usdValue = async function () {
     date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
     dateForCalender = data.Date.substr(0, 10);
     calendar.value = dateForCalender;
-    console.log(dateForCalender);
-    console.log(data);
 
     if (toggleCur.checked) {
       changeRate(eurPrice);
@@ -248,8 +241,6 @@ usdValue();
 const calendar = document.querySelector(".calendar");
 
 calendar.addEventListener("change", function (e) {
-  console.log(e);
-  console.log(calendar.value);
   const calYear = calendar.value.split("-")[0];
   const calMonth = calendar.value.split("-")[1];
   const calDay = calendar.value.split("-")[2];

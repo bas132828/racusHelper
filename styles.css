@@ -323,8 +323,8 @@ body {
 .pictureMoon {
   position: absolute;
   display: block;
-  height: 22%;
-  min-height: 12rem;
+  height: 20%;
+  /* min-height: 9rem; */
   width: auto;
   top: -1%;
   left: 52%;
@@ -483,6 +483,30 @@ body {
   body {
     font-size: 40%;
   }
+  .toggles {
+    position: relative;
+    left: -5rem;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .main-container {
+    position: relative;
+    width: 58rem;
+    height: 95vh;
+    max-height: 100rem;
+    min-height: 50rem;
+    min-width: 30rem;
+    border-radius: 7rem;
+    margin: 1rem 20rem;
+    background: rgba(111, 87, 222, 0.5);
+    z-index: 2;
+    box-shadow: 0 0 3rem rgba(9, 7, 15, 0.4);
+  }
+
   .pictureHalfMoon {
     left: 38%;
   }
