@@ -16,6 +16,7 @@ const sunPic = document.querySelector(".day");
 const usdPic = document.querySelector(".usd");
 const euroPic = document.querySelector(".euro");
 const today = new Date();
+const calendar = document.querySelector(".calendar");
 
 
 //pictures
@@ -154,6 +155,15 @@ toggleCur.addEventListener("change", function () {
 
 localStorage.setItem('today', `${realDay}`);
 
+if (localStorage.getItem('today')===localStorage.getItem('objDate')) {
+  usdPrice = localStorage.getItem('USD');
+  eurPrice = localStorage.getItem('EUR');
+  dayOfWeek = localStorage.getItem('dayOfWeek');
+  curMonth = localStorage.getItem('curMonth');
+  curDay = localStorage.getItem('objDate');
+  date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
+  calendar.value = localStorage.getItem('fullDate');
+} else {
 
 const usdValue = async function () {
   try {
@@ -187,6 +197,9 @@ const usdValue = async function () {
       localStorage.setItem('objDate', `${curDay}`);
       localStorage.setItem('USD', `${data.Valute.USD.Value}`);
       localStorage.setItem('EUR', `${data.Valute.EUR.Value}`);
+      localStorage.setItem('dayOfWeek', `${days[new Date(data.Date).getDay()]}`);
+      localStorage.setItem('curMonth', `${months[new Date(data.Date).getMonth()]}`);
+      localStorage.setItem('fullDate', `${dateForCalender}`);
 
       if (toggleCur.checked) {
         changeRate(eurPrice);
@@ -212,6 +225,10 @@ const usdValue = async function () {
       localStorage.setItem('objDate', `${curDay}`);
       localStorage.setItem('USD', `${data.Valute.USD.Value}`);
       localStorage.setItem('EUR', `${data.Valute.EUR.Value}`);
+      localStorage.setItem('dayOfWeek', `${days[new Date(data.Date).getDay()]}`);
+      localStorage.setItem('curMonth', `${months[new Date(data.Date).getMonth()]}`);
+      localStorage.setItem('fullDate', `${dateForCalender}`);
+
 
       if (toggleCur.checked) {
         changeRate(eurPrice);
@@ -242,6 +259,10 @@ const usdValue = async function () {
     localStorage.setItem('objDate', `${curDay}`);
     localStorage.setItem('USD', `${data.Valute.USD.Value}`);
     localStorage.setItem('EUR', `${data.Valute.EUR.Value}`);
+    localStorage.setItem('dayOfWeek', `${days[new Date(data.Date).getDay()]}`);
+    localStorage.setItem('curMonth', `${months[new Date(data.Date).getMonth()]}`);
+    localStorage.setItem('fullDate', `${dateForCalender}`);
+
 
     if (toggleCur.checked) {
       changeRate(eurPrice);
@@ -254,10 +275,9 @@ const usdValue = async function () {
 };
 
 usdValue();
-
+}
 //calendar thing
 
-const calendar = document.querySelector(".calendar");
 
 calendar.addEventListener("change", function (e) {
   const calYear = calendar.value.split("-")[0];
