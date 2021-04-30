@@ -338,9 +338,6 @@ async function apiAdvice() {
 }
 apiAdvice();
 
-console.log(typeof Number(curDay));
-console.log(typeof realDay);
-
 const calcPaymentShow = function (value) {
   if (toggleCur.checked) {
     const toPay = Number(eurPrice) * Number(value);
