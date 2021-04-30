@@ -289,11 +289,12 @@ apiAdvice();
 const calcPaymentShow = function (value) {
   if (toggleCur.checked) {
     const toPay = Number(eurPrice) * Number(value);
-
+    if (curDay !== realDay) alert("София, курс не сегодняшний!");
     result.textContent = `${Math.trunc(toPay)} руб. ${
       Math.trunc(toPay * 100) % 100
     } коп.`;
     alert("You are using euro rate");
+
     //////////////////////////////////
     // if (!toggleNight.checked) {
     //   racoon.style.display = "block";
@@ -323,6 +324,7 @@ const calcPaymentShow = function (value) {
     //   });
     // }
   } else {
+    if (curDay !== realDay) alert("София, курс не сегодняшний!");
     const toPay = Number(usdPrice) * Number(value);
     result.textContent = `${Math.trunc(toPay)} руб. ${
       Math.trunc(toPay * 100) % 100
