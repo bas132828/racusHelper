@@ -56,6 +56,8 @@ let eurPrice;
 let dayOfWeek;
 let curMonth;
 let curDay;
+let realDay;
+let dateForCalender;
 
 let currentTheme = localStorage.getItem("theme");
 
@@ -126,43 +128,87 @@ toggleCur.addEventListener("change", function () {
 });
 
 const usdValue = async function () {
-  try{const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
-  const data = await resp.json();
-  const today = new Date();
-  curDay = new Date(data.Date).getDate();
-  const realDay = today.getDate();
-  const weekDay = days[today.getDay()];
-
-  if (curDay !== realDay && weekDay!== 'Saturday' && weekDay!== 'Sunday')  {
-    const resp2 = await fetch(
-      `https://www.cbr-xml-daily.ru//archive//${today.getFullYear()}//0${
-        today.getMonth() + 1
-      }//${today.getDate()}//daily_json.js`
-    );
-    const data = await resp2.json();
-    console.log(data);
-    usdPrice = data.Valute.USD.Value;
-    eurPrice = data.Valute.EUR.Value;
-    //DATES
-    dayOfWeek = days[new Date(data.Date).getDay()];
-    curMonth = months[new Date(data.Date).getMonth()];
+  try {
+    const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
+    const data = await resp.json();
+    const today = new Date();
     curDay = new Date(data.Date).getDate();
-    date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
+    // DATE for the calender
 
-    if (toggleCur.checked) {
-      changeRate(eurPrice);
-      infoText.textContent = "EURO rate:";
+    /////////////////////////
+    realDay = today.getDate();
+    const weekDay = days[today.getDay()];
+
+    if (curDay !== realDay) {
+      const resp2 = await fetch(
+        `https://www.cbr-xml-daily.ru//archive//${today.getFullYear()}//0${
+          today.getMonth() + 1
+        }//${today.getDate()}//daily_json.js`
+      );
+      const data = await resp2.json();
+      console.log(data);
+      usdPrice = data.Valute.USD.Value;
+      eurPrice = data.Valute.EUR.Value;
+      //DATES
+      console.log("2nd part fired");
+
+      dayOfWeek = days[new Date(data.Date).getDay()];
+      curMonth = months[new Date(data.Date).getMonth()];
+      curDay = new Date(data.Date).getDate();
+      date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
+      dateForCalender = data.Date.substr(0, 10);
+      calendar.value = dateForCalender;
+      console.log(dateForCalender);
+      console.log(data);
+
+      if (toggleCur.checked) {
+        changeRate(eurPrice);
+        infoText.textContent = "EURO rate:";
+      } else {
+        changeRate(usdPrice);
+        infoText.textContent = "USD rate:";
+      }
     } else {
-      changeRate(usdPrice);
-      infoText.textContent = "USD rate:";
+      console.log("1st part fired");
+
+      usdPrice = data.Valute.USD.Value;
+      eurPrice = data.Valute.EUR.Value;
+      //DATES
+      dayOfWeek = days[new Date(data.Date).getDay()];
+      curMonth = months[new Date(data.Date).getMonth()];
+      date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
+      dateForCalender = data.Date.substr(0, 10);
+      calendar.value = dateForCalender;
+      console.log(dateForCalender);
+      console.log(data);
+
+      if (toggleCur.checked) {
+        changeRate(eurPrice);
+        infoText.textContent = "EURO rate:";
+      } else {
+        changeRate(usdPrice);
+        infoText.textContent = "USD rate:";
+      }
     }
-  } else {
+  } catch (e) {
+    const resp = await fetch("https://www.cbr-xml-daily.ru/daily_json.js");
+    const data = await resp.json();
+    const today = new Date();
+    curDay = new Date(data.Date).getDate();
+
+    console.log(e.message);
+    console.log("3rd part fired");
+
     usdPrice = data.Valute.USD.Value;
     eurPrice = data.Valute.EUR.Value;
     //DATES
     dayOfWeek = days[new Date(data.Date).getDay()];
     curMonth = months[new Date(data.Date).getMonth()];
     date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
+    dateForCalender = data.Date.substr(0, 10);
+    calendar.value = dateForCalender;
+    console.log(dateForCalender);
+    console.log(data);
 
     if (toggleCur.checked) {
       changeRate(eurPrice);
@@ -171,50 +217,48 @@ const usdValue = async function () {
       changeRate(usdPrice);
       infoText.textContent = "USD rate:";
     }
-  }}catch(e){
-    console.log(e.message)
   }
 };
 
 usdValue();
 
-
 //calendar thing
 
-const calendar = document.querySelector('.calendar')
+const calendar = document.querySelector(".calendar");
 
+calendar.addEventListener("change", function (e) {
+  console.log(e);
+  console.log(calendar.value);
+  const calYear = calendar.value.split("-")[0];
+  const calMonth = calendar.value.split("-")[1];
+  const calDay = calendar.value.split("-")[2];
 
-calendar.addEventListener('change', function(e) {
- console.log(e)
- console.log(calendar.value)
-const calYear = calendar.value.split('-')[0]
-const calMonth = calendar.value.split('-')[1];
-const calDay = calendar.value.split('-')[2];
+  fetch(
+    `https://www.cbr-xml-daily.ru//archive//${calYear}//${calMonth}//${calDay}//daily_json.js`
+  )
+    .then((resp) => resp.json())
+    .then((data) => {
+      usdPrice = data.Valute.USD.Value;
+      eurPrice = data.Valute.EUR.Value;
+      //DATES
+      dayOfWeek = days[new Date(data.Date).getDay()];
+      curMonth = months[new Date(data.Date).getMonth()];
+      curDay = new Date(data.Date).getDate();
+      date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
 
-fetch(`https://www.cbr-xml-daily.ru//archive//${calYear}//${calMonth}//${calDay}//daily_json.js`).then(resp=>resp.json()).then(data=>{
-    usdPrice = data.Valute.USD.Value;
-    eurPrice = data.Valute.EUR.Value;
-    //DATES
-    dayOfWeek = days[new Date(data.Date).getDay()];
-    curMonth = months[new Date(data.Date).getMonth()];
-    curDay = new Date(data.Date).getDate();
-    date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
-
-    if (toggleCur.checked) {
-      changeRate(eurPrice);
-      infoText.textContent = "EURO rate:";
-    } else {
-      changeRate(usdPrice);
-      infoText.textContent = "USD rate:";
-    }
-  }).catch(()=> {
-  date.textContent = `Weekend or smth`
-  changeRate(`🤷‍♂`)
-})
-
-})
-
-
+      if (toggleCur.checked) {
+        changeRate(eurPrice);
+        infoText.textContent = "EURO rate:";
+      } else {
+        changeRate(usdPrice);
+        infoText.textContent = "USD rate:";
+      }
+    })
+    .catch(() => {
+      date.textContent = `Weekend or smth`;
+      changeRate(`🤷‍♂`);
+    });
+});
 
 const render = function (str) {
   text.textContent = str;
@@ -233,10 +277,31 @@ apiAdvice();
 const calcPaymentShow = function (value) {
   if (toggleCur.checked) {
     const toPay = Number(eurPrice) * Number(value);
+    if (!toggleNight.checked) {
+      racoon.style.display = "block";
+      bublespeech.style.display = "block";
+      // closeBubble.addEventListener("click", function () {
+      //   racoon.style.display = "none";
+      //   bublespeech.style.display = "none";
+      // });
+      setTimeout(function () {
+        bublespeech.style.display = "none";
+        racoon.style.display = "none";
+      }, 3000);
+    } else {
+      bublespeech.style.display = "block";
+      // closeBubble.addEventListener("click", function () {
+      //   bublespeech.style.display = "none";
+      // });
+      setTimeout(function () {
+        bublespeech.style.display = "none";
+      }, 3000);
+    }
+
     result.textContent = `${Math.trunc(toPay)} руб. ${
       Math.trunc(toPay * 100) % 100
     } коп.`;
-    // alert("You are using euro rate");
+    alert("You are using euro rate");
     //////////////////////////////////
     // if (!toggleNight.checked) {
     //   racoon.style.display = "block";
@@ -246,24 +311,25 @@ const calcPaymentShow = function (value) {
     //     racoon.style.display = "none";
     //   }, 3000);
     // } else {
-    //   bublespeech.style.display = "block";   
+    //   bublespeech.style.display = "block";
     //   setTimeout(function () {
     //     bublespeech.style.display = "none";
     //   }, 3000);
     // }
-    if (!toggleNight.checked) {
-      racoon.style.display = "block";
-      bublespeech.style.display = "block";
-      closeBubble.addEventListener("click", function () {
-        racoon.style.display = "none";
-        bublespeech.style.display = "none";
-      });
-    } else {
-      bublespeech.style.display = "block";
-      closeBubble.addEventListener("click", function () {
-        bublespeech.style.display = "none";
-      });
-    }
+    ///////////////////////////
+    // if (!toggleNight.checked) {
+    //   racoon.style.display = "block";
+    //   bublespeech.style.display = "block";
+    //   closeBubble.addEventListener("click", function () {
+    //     racoon.style.display = "none";
+    //     bublespeech.style.display = "none";
+    //   });
+    // } else {
+    //   bublespeech.style.display = "block";
+    //   closeBubble.addEventListener("click", function () {
+    //     bublespeech.style.display = "none";
+    //   });
+    // }
   } else {
     const toPay = Number(usdPrice) * Number(value);
     result.textContent = `${Math.trunc(toPay)} руб. ${
@@ -379,5 +445,3 @@ copyTextareaBtn.addEventListener("click", autoClipboard);
 
 const req = new XMLHttpRequest();
 // const url = 'https://www.cbr-xml-daily.ru//archive//2021//$04//28//daily_json.js'
-
-
