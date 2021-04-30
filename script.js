@@ -338,12 +338,15 @@ async function apiAdvice() {
 }
 apiAdvice();
 
+console.log(typeof Number(curDay));
+console.log(typeof realDay);
+
 const calcPaymentShow = function (value) {
   if (toggleCur.checked) {
     const toPay = Number(eurPrice) * Number(value);
     const random = Math.round(Math.random());
 
-    if (curDay !== realDay) {
+    if (Number(curDay) !== realDay) {
       random === 1
         ? alert("София, , курс не сегодняшний!")
         : alert("Татьяна , курс не сегодняшний!");
@@ -384,8 +387,7 @@ const calcPaymentShow = function (value) {
     // }
   } else {
     const random = Math.round(Math.random());
-
-    if (curDay !== realDay) {
+    if (Number(curDay) !== realDay) {
       random === 1
         ? alert("София, курс не сегодняшний!")
         : alert("Татьяна , курс не сегодняшний!");
