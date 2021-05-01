@@ -319,8 +319,8 @@ calendar.addEventListener("change", function (e) {
       }
     })
     .catch(() => {
-      date.textContent = `Weekend or smth`;
-      changeRate(`🤷‍♂`);
+      date.textContent = `try previous date`;
+      changeRate(`ಠ_ಠ no rate`);
     });
 });
 
@@ -341,12 +341,9 @@ apiAdvice();
 const calcPaymentShow = function (value) {
   if (toggleCur.checked) {
     const toPay = Number(eurPrice) * Number(value);
-    const random = Math.round(Math.random());
 
     if (Number(curDay) !== realDay) {
-      random === 1
-        ? alert("София, , курс не сегодняшний!")
-        : alert("Татьяна , курс не сегодняшний!");
+      alert("rate is not up to date");
     }
 
     result.textContent = `${Math.trunc(toPay)} руб. ${
@@ -383,11 +380,8 @@ const calcPaymentShow = function (value) {
     //   });
     // }
   } else {
-    const random = Math.round(Math.random());
     if (Number(curDay) !== realDay) {
-      random === 1
-        ? alert("София, курс не сегодняшний!")
-        : alert("Татьяна , курс не сегодняшний!");
+      alert("rate is not up to date");
     }
     const toPay = Number(usdPrice) * Number(value);
     result.textContent = `${Math.trunc(toPay)} руб. ${
