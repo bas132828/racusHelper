@@ -309,7 +309,6 @@ calendar.addEventListener("change", function (e) {
       curMonth = months[new Date(data.Date).getMonth()];
       curDay = new Date(data.Date).getDate();
       date.textContent = `${dayOfWeek} ${curDay}, ${curMonth}`;
-
       if (toggleCur.checked) {
         changeRate(eurPrice);
         infoText.textContent = "EURO rate:";
