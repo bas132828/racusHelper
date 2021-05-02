@@ -102,6 +102,9 @@ toggleNight.addEventListener("change", function (e) {
     localStorage.setItem("theme", "light");
   } else {
     dayPics();
+    if (racoon.classList.contains("animation")) {
+      racoon.style.animation = "moveUp 0.5s";
+    }
     localStorage.setItem("theme", "dark");
   }
 });
@@ -135,13 +138,22 @@ toggleCur.addEventListener("change", function () {
       //   bublespeech.style.display = "none";
       // });
       setTimeout(function () {
+        racoon.style.animation = "moveR 3s";
+        // bublespeech.style.animation = "fade 8s";
+        // racoon.style.animationIterationCount = "1";
+        // bublespeech.style.animationIterationCount = "1";
         bublespeech.style.display = "none";
+      }, 3000);
+      setTimeout(function () {
         racoon.style.display = "none";
-      }, 2500);
+        racoon.style.animation = "moveUp 0.5s";
+        // bublespeech.style.visibility = "hidden";
+      }, 5200);
     } else {
       bublespeech.style.display = "block";
       // closeBubble.addEventListener("click", function () {
       //   bublespeech.style.display = "none";
+      // racoon.style.bottom = going + "px";
       // });
       setTimeout(function () {
         bublespeech.style.display = "none";
@@ -152,7 +164,6 @@ toggleCur.addEventListener("change", function () {
     inputFieldFn();
   }
 });
-
 localStorage.setItem("today", `${realDay}`);
 
 const dataFn = function (_data) {
