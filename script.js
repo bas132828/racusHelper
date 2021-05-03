@@ -63,24 +63,24 @@ let dateForCalender;
 
 let currentTheme = localStorage.getItem("theme");
 
-const nightPics = function () {
-  racoon.style.display = "block";
-  sun.style.display = "block";
-  moon.style.display = "none";
-  halfMoon.style.display = "none";
-  document.body.style.background = "#b3a7ee";
-  adviceHook.classList.remove("advice");
-  adviceHook.classList.add("adviceDay");
-};
-
 const dayPics = function () {
-  racoon.style.display = "none";
+  racoon.classList.add("hiddenR");
   sun.style.display = "none";
   moon.style.display = "block";
   halfMoon.style.display = "block";
   document.body.style.background = "#5841d7";
   adviceHook.classList.remove("adviceDay");
   adviceHook.classList.add("advice");
+};
+
+const nightPics = function () {
+  racoon.classList.remove("hiddenR");
+  sun.style.display = "block";
+  moon.style.display = "none";
+  halfMoon.style.display = "none";
+  document.body.style.background = "#b3a7ee";
+  adviceHook.classList.remove("advice");
+  adviceHook.classList.add("adviceDay");
 };
 
 const initialTheme = function () {
@@ -102,9 +102,6 @@ toggleNight.addEventListener("change", function (e) {
     localStorage.setItem("theme", "light");
   } else {
     dayPics();
-    if (racoon.classList.contains("animation")) {
-      racoon.style.animation = "moveUp 0.5s";
-    }
     localStorage.setItem("theme", "dark");
   }
 });
@@ -131,33 +128,24 @@ toggleCur.addEventListener("change", function () {
     inputFieldFn();
     ///////////
     if (!toggleNight.checked) {
-      racoon.style.display = "block";
+      racoon.classList.toggle("hiddenR");
       bublespeech.style.display = "block";
-      // closeBubble.addEventListener("click", function () {
-      //   racoon.style.display = "none";
-      //   bublespeech.style.display = "none";
-      // });
+      console.log("hi");
       setTimeout(function () {
-        racoon.style.animation = "moveR 3s";
-        // bublespeech.style.animation = "fade 8s";
-        // racoon.style.animationIterationCount = "1";
-        // bublespeech.style.animationIterationCount = "1";
+        racoon.classList.add("shortAnimation");
+        bublespeech.classList.add("anime");
+      }, 1500);
+      setTimeout(function () {
+        racoon.classList.toggle("hiddenR");
+        racoon.classList.remove("shortAnimation");
         bublespeech.style.display = "none";
       }, 3000);
-      setTimeout(function () {
-        racoon.style.display = "none";
-        racoon.style.animation = "moveUp 0.5s";
-        // bublespeech.style.visibility = "hidden";
-      }, 5200);
     } else {
       bublespeech.style.display = "block";
-      // closeBubble.addEventListener("click", function () {
-      //   bublespeech.style.display = "none";
-      // racoon.style.bottom = going + "px";
-      // });
+      bublespeech.classList.add("anime");
       setTimeout(function () {
         bublespeech.style.display = "none";
-      }, 2500);
+      }, 1800);
     }
   } else {
     changeRate(usdPrice);
@@ -305,35 +293,6 @@ const calcPaymentShow = function (value) {
       Math.trunc(toPay * 100) % 100
     } коп.`;
     alert("You are using euro rate");
-
-    //////////////////////////////////
-    // if (!toggleNight.checked) {
-    //   racoon.style.display = "block";
-    //   bublespeech.style.display = "block";
-    //   setTimeout(function () {
-    //     bublespeech.style.display = "none";
-    //     racoon.style.display = "none";
-    //   }, 3000);
-    // } else {
-    //   bublespeech.style.display = "block";
-    //   setTimeout(function () {
-    //     bublespeech.style.display = "none";
-    //   }, 3000);
-    // }
-    ///////////////////////////
-    // if (!toggleNight.checked) {
-    //   racoon.style.display = "block";
-    //   bublespeech.style.display = "block";
-    //   closeBubble.addEventListener("click", function () {
-    //     racoon.style.display = "none";
-    //     bublespeech.style.display = "none";
-    //   });
-    // } else {
-    //   bublespeech.style.display = "block";
-    //   closeBubble.addEventListener("click", function () {
-    //     bublespeech.style.display = "none";
-    //   });
-    // }
   } else {
     if (Number(curDay) !== realDay) {
       alert("rate is not up to date");

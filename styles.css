@@ -352,7 +352,6 @@ body {
 }
 
 .pictureRacoon {
-  display: block;
   position: absolute;
   height: 20%;
   width: auto;
@@ -360,6 +359,18 @@ body {
   left: 13%;
   z-index: 1;
   animation: moveUp 0.5s;
+}
+
+.hiddenR {
+  display: none;
+}
+
+.shortAnimation {
+  animation: moveR 3s;
+}
+
+.anime {
+  animation: fade 3s;
 }
 
 @keyframes moveR {
@@ -495,6 +506,11 @@ body {
   }
 }
 
+/* 
+MEDIA QUARRIIIESSSZZZZ!!!!!
+
+ */
+
 @media (max-width: 600px) {
   html,
   body {
@@ -535,6 +551,7 @@ body {
     top: -1%;
     left: 40%;
   }
+
   .toggles {
     padding: 3.5rem 0.5rem;
     -webkit-user-select: none;
