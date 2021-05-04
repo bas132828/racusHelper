@@ -525,6 +525,7 @@ MEDIA QUARRIIIESSSZZZZ!!!!!
     background: rgba(111, 87, 222, 0.5);
     z-index: 2;
     box-shadow: 0 0 3rem rgba(9, 7, 15, 0.4);
+    max-height: 80vh;
   }
 
   .pictureHalfMoon {
