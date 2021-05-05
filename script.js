@@ -211,9 +211,13 @@ if (realDay + "" === localStorage.getItem("objDate")) {
       curDay = new Date(data.Date).getDate();
       if (curDay !== realDay) {
         const resp2 = await fetch(
-          `https://www.cbr-xml-daily.ru//archive//${today.getFullYear()}//0${
-            today.getMonth() + 1
-          }//${today.getDate()}//daily_json.js`
+          `https://www.cbr-xml-daily.ru//archive//${today.getFullYear()}//${
+            today.getMonth() + 1 >= 10
+              ? today.getMonth() + 1
+              : "0" + (today.getMonth() + 1)
+          }//${
+            today.getDate() >= 10 ? today.getDate() : "0" + today.getDate()
+          }//daily_json.js`
         );
         const data = await resp2.json();
         console.log("2st part fired");
