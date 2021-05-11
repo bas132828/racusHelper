@@ -289,18 +289,12 @@ const calcPaymentShow = function (value) {
   if (toggleCur.checked) {
     const toPay = Number(eurPrice) * Number(value);
 
-    if (Number(curDay) !== realDay) {
-      alert("rate is not up to date");
-    }
-
     result.textContent = `${Math.trunc(toPay)} руб. ${
       Math.trunc(toPay * 100) % 100
     } коп.`;
     alert("You are using euro rate");
   } else {
-    if (Number(curDay) !== realDay) {
-      alert("rate is not up to date");
-    }
+  
     const toPay = Number(usdPrice) * Number(value);
     result.textContent = `${Math.trunc(toPay)} руб. ${
       Math.trunc(toPay * 100) % 100
