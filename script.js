@@ -126,27 +126,6 @@ toggleCur.addEventListener("change", function () {
   if (toggleCur.checked) {
     changeRate(eurPrice);
     inputFieldFn();
-    ///////////
-    if (!toggleNight.checked) {
-      racoon.classList.toggle("hiddenR");
-      bublespeech.style.display = "block";
-      console.log("hi");
-      setTimeout(function () {
-        racoon.classList.add("shortAnimation");
-        bublespeech.classList.add("anime");
-      }, 1500);
-      setTimeout(function () {
-        racoon.classList.toggle("hiddenR");
-        racoon.classList.remove("shortAnimation");
-        bublespeech.style.display = "none";
-      }, 3000);
-    } else {
-      bublespeech.style.display = "block";
-      bublespeech.classList.add("anime");
-      setTimeout(function () {
-        bublespeech.style.display = "none";
-      }, 1800);
-    }
   } else {
     changeRate(usdPrice);
     inputFieldFn();
@@ -402,80 +381,6 @@ const autoClipboard = function (event) {
 };
 
 copyTextareaBtn.addEventListener("click", autoClipboard);
-
-//stickers
-/*
-let sticker;
-const placeholder = document.querySelector(".placeholder");
-const contWrapper = document.querySelector(".container-wrapper");
-const mainContainer = document.querySelector(".main-container");
-
-const btnClose = document.querySelector(".btn-close");
-
-const dragstart = (e) => {
-  e.target.classList.add("onmove");
-  mainContainer.classList.add("container-filter");
-  setTimeout(() => {
-    e.target.classList.add("hide");
-  });
-};
-const dragend = (e) => {
-  e.target.classList.remove("onmove");
-  e.target.classList.remove("hide");
-  mainContainer.classList.remove("container-filter");
-};
-const dragdrop = (e) => {
-  if (e.target !== contWrapper) return;
-  // console.log(sticker);
-  // console.log(e);
-  sticker = document.querySelectorAll(".sticker");
-  e.target.append(sticker[0]);
-
-  // console.log(e.pageY, sticker.getBoundingClientRect().left);
-  sticker.style.top = `${e.pageY - sticker.offsetWidth / 2}px`;
-  sticker.style.left = `${e.pageX - sticker.offsetHeight / 2}px`;
-
-  sticker.addEventListener("dragstart", dragstart);
-  sticker.addEventListener("dragend", dragend);
-};
-
-placeholder.addEventListener("dragover", (e) => e.preventDefault());
-placeholder.addEventListener("drop", dragdrop);
-
-const btnCticker = document.querySelector(".btn__sticker");
-
-const stickers = [];
-
-// const stk = {
-//   id=0,
-//   top = 0,
-//   left = 0,
-//   text = text
-// }
-const addSticker = (e) => {
-  e.preventDefault();
-  stickers.push({
-    id: stickers.length,
-    top: "100px",
-    left: "100px",
-  });
-  // console.log(stickers);
-  renderSticker(stickers[stickers.length - 1]);
-};
-
-const renderSticker = (el) => {
-  const html = `
-  <div class="sticker" data-id=${el.id} draggable="true">
-    <textarea class="sticker__text" maxlength="38"></textarea>
-    <button class="btn-close">➕</button>
-  </div>
-  `;
-  placeholder.insertAdjacentHTML("afterBegin", html);
-};
-
-
-*/
-
 const btnSticker = document.querySelector(".btn__sticker");
 const contWrapper = document.querySelector(".container-wrapper");
 const mainContainer = document.querySelector(".main-container");
@@ -536,9 +441,9 @@ const renderSticker = (el) => {
   });
 };
 
-window.addEventListener("click", (e) => {
-  e.preventDefault();
-  console.log(e.target);
-  console.log(e.target.classList.contains("btn-close"));
-  // if (e.target.classList.contains("btn-close")) e.target.parentElement.remove();
-});
+// window.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   console.log(e.target);
+//   console.log(e.target.classList.contains("btn-close"));
+// if (e.target.classList.contains("btn-close")) e.target.parentElement.remove();
+// });
