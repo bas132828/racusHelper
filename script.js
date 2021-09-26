@@ -385,7 +385,7 @@ const btnSticker = document.querySelector(".btn__sticker");
 const contWrapper = document.querySelector(".container-wrapper");
 const mainContainer = document.querySelector(".main-container");
 const stickers = [];
-
+/*
 const addSticker = (e) => {
   e.preventDefault();
   stickers.push({
@@ -440,7 +440,7 @@ const renderSticker = (el) => {
     };
   });
 };
-
+*/
 // window.addEventListener("click", (e) => {
 //   e.preventDefault();
 //   console.log(e.target);
